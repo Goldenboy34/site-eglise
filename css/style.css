@@ -86,3 +86,61 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+nav {
+    background-color: #007BFF; /* Bleu */
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+.header-paroisse {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF; /* bleu */
+    color: white;
+}
+
+.logo-paroisse {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* centrer avec marge en bas */
+}
+
+.titre-paroisse {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.menu-principal {
+    background-color: #0056b3; /* bleu foncé ou celui que tu préfères */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.menu-principal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-principal li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-principal a:hover {
+    text-decoration: underline;
+}
