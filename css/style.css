@@ -62,6 +62,7 @@ div img {
     height: auto;
     border-radius: 10px;
 }
+
 nav {
     background-color: #333;
     padding: 10px;
@@ -86,6 +87,7 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
 nav {
     background-color: #007BFF; /* Bleu */
     padding: 10px;
@@ -99,6 +101,7 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
 .header-paroisse {
     text-align: center;
     padding: 20px;
@@ -118,6 +121,7 @@ nav a:hover {
     font-size: 2.5em;
     font-weight: bold;
 }
+
 .menu-principal {
     background-color: #0056b3; /* bleu foncé ou celui que tu préfères */
     padding: 10px 0;
@@ -144,6 +148,7 @@ nav a:hover {
 .menu-principal a:hover {
     text-decoration: underline;
 }
+
 /* Section Accueil - équipe pastorale et citation */
 .accueil-info {
   max-width: 720px;
@@ -155,6 +160,7 @@ nav a:hover {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #1a2e6e;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .accueil-info h2 {
@@ -207,4 +213,31 @@ nav a:hover {
   margin-top: 8px;
   font-weight: 600;
   color: #1a2e6e;
+}
+
+/* Adaptation responsive mobile */
+@media (max-width: 480px) {
+  .accueil-info {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .accueil-info h2 {
+    font-size: 1.7em;
+  }
+
+  .equipe-pastorale h3 {
+    font-size: 1.3em;
+  }
+
+  .equipe-pastorale li {
+    font-size: 1em;
+  }
+
+  .citation-spirituelle {
+    max-width: 100%;
+    padding-left: 10px;
+    border-left-width: 3px;
+    font-size: 1em;
+  }
 }
