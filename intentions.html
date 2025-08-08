@@ -1,24 +1,207 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Intentions de Messe</title>
-    <link rel="stylesheet" href="css/style.css">  <!-- Lien vers le fichier CSS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intentions de Messe</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0 15px 30px 15px;
+      color: #0d47a1;
+    }
+
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight: 800;
+    }
+
+    section {
+      max-width: 600px;
+      background: white;
+      margin: 0 auto;
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 25px;
+      font-weight: 800;
+      font-size: 2em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    textarea {
+      padding: 12px 15px;
+      font-size: 1.1em;
+      border: 2px solid #1976d2;
+      border-radius: 8px;
+      transition: border-color 0.3s;
+      resize: vertical;
+      font-family: inherit;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    textarea:focus {
+      border-color: #0d47a1;
+      outline: none;
+      box-shadow: 0 0 6px #0d47a1aa;
+    }
+    textarea {
+      min-height: 100px;
+    }
+
+    label {
+      font-weight: 700;
+      color: #1565c0;
+      margin-bottom: 6px;
+      user-select: none;
+    }
+
+    /* Radio group */
+    .radio-group {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .radio-group input[type="radio"] {
+      accent-color: #1976d2;
+      cursor: pointer;
+    }
+    .radio-group label {
+      font-weight: 600;
+      cursor: pointer;
+      color: #0d47a1;
+    }
+
+    button[type="submit"] {
+      background-color: #1976d2;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2em;
+      padding: 15px 0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+      box-shadow: 0 3px 8px rgba(25, 118, 210, 0.6);
+    }
+    button[type="submit"]:hover {
+      background-color: #0d47a1;
+    }
+
+    /* Encadré infos paiement & tarifs */
+    .info-box {
+      background: #bbdefb;
+      border-left: 5px solid #1976d2;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      color: #0d47a1;
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+    }
+    .info-box strong {
+      color: #0d47a1;
+    }
+
+    /* Tarifs list */
+    .tarifs-list {
+      list-style: none;
+      padding-left: 0;
+      font-weight: 600;
+      color: #0d47a1;
+      margin: 8px 0 0 0;
+    }
+    .tarifs-list li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 25px 20px;
+      }
+      button[type="submit"] {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Intentions de Messe</h1>
-    </header>
-    <section>
-        <h2>Soumettez vos intentions de messe</h2>
-        <form action="https://formspree.io/f/xovlplzr" method="POST">
 
-            <input type="text" name="nom" placeholder="Votre nom" required>
-            <input type="date" name="date" placeholder="Date de l’intention" required>
-            <textarea name="intention" placeholder="Votre intention" required></textarea>
-            <input type="text" name="contact" placeholder="Votre contact (e-mail/WhatsApp)" required>
-            <button type="submit">Envoyer</button>
-        </form>
-    </section>
+<header>
+  <h1>Intentions de Messe</h1>
+</header>
+
+<section>
+  <h2>Soumettez vos intentions de messe</h2>
+
+  <div class="info-box">
+    Pour la transaction, envoyez votre contribution via Tmoney ou Flooz au numéro : <strong>+228 90 00 00 00</strong>.
+    <br />
+    <em>Merci de préciser le motif "Intention de messe".</em>
+    <ul class="tarifs-list">
+      <li><strong>Messes de semaine :</strong> 1500 FCFA</li>
+      <li><strong>Messes du dimanche :</strong> 3500 FCFA</li>
+    </ul>
+  </div>
+
+  <form action="https://formspree.io/f/xovlplzr" method="POST">
+    <label for="nom">Votre nom</label>
+    <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
+
+    <label for="date">Date de l’intention</label>
+    <input type="date" id="date" name="date" required />
+
+    <label>Messe souhaitée</label>
+    <div class="radio-group">
+      <input type="radio" id="messe-semaine" name="type_messe" value="Messe de semaine" required />
+      <label for="messe-semaine">Messe de semaine</label>
+
+      <input type="radio" id="messe-dimanche" name="type_messe" value="Messe du dimanche" required />
+      <label for="messe-dimanche">Messe du dimanche</label>
+    </div>
+
+    <label for="heure">Heure souhaitée (ex: 8:30)</label>
+    <input type="time" id="heure" name="heure" required />
+
+    <label for="intention">Votre intention</label>
+    <textarea id="intention" name="intention" placeholder="Écrivez votre demande ici" required></textarea>
+
+    <label for="contact">Votre contact (e-mail/WhatsApp)</label>
+    <input type="text" id="contact" name="contact" placeholder="ex: email@example.com ou +228 90 00 00 00" required />
+
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+
 </body>
 </html>
