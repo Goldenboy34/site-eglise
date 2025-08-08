@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Onglets simples</title>
     <style>
         body {
@@ -14,7 +14,7 @@
         /* Style des onglets */
         .tabs {
             display: flex;
-            background-color: #4CAF50;
+            background-color: #1976d2; /* Bleu plus vif */
         }
 
         .tab-button {
@@ -23,7 +23,7 @@
             text-align: center;
             color: white;
             cursor: pointer;
-            background-color: #4CAF50;
+            background-color: #1976d2;
             border: none;
             outline: none;
             font-size: 16px;
@@ -31,11 +31,11 @@
         }
 
         .tab-button:hover {
-            background-color: #45a049;
+            background-color: #1565c0; /* Bleu foncé au survol */
         }
 
         .tab-button.active {
-            background-color: #2e7031;
+            background-color: #0d47a1; /* Bleu encore plus foncé */
         }
 
         /* Contenu */
@@ -48,49 +48,118 @@
         .tab-content.active {
             display: block;
         }
+
+        /* Couleur pour la liturgie */
+        .couleur-vert {
+            color: #1565c0; /* bleu foncé */
+            font-weight: 700;
+        }
+
+        /* Encadré pour grand titre dans onglet Horaire */
+        #horaire > h2 {
+            background-color: #0d47a1; /* Bleu foncé */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 800;
+            font-size: 2em;
+        }
+
+        /* Encadré pour sous-titres dans onglet Horaire */
+        #horaire h3 {
+            background-color: #42a5f5; /* Bleu clair */
+            color: #0d47a1; /* Bleu foncé pour texte */
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* Listes */
+        #horaire ul {
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            font-size: 1.1em;
+            color: #0d47a1;
+        }
+
+        /* Responsive pour petits écrans */
+        @media (max-width: 600px) {
+            .tab-button {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Onglets -->
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab('horaire')">Horaire</button>
-        <button class="tab-button" onclick="openTab('calendrier')">Calendrier liturgique</button>
-        <button class="tab-button" onclick="openTab('evangile')">Évangile du jour</button>
+        <button class="tab-button active" data-tab="horaire">Horaire</button>
+        <button class="tab-button" data-tab="calendrier">Calendrier liturgique</button>
+        <button class="tab-button" data-tab="evangile">Évangile du jour</button>
     </div>
 
-    <!-- Contenus -->
     <div id="horaire" class="tab-content active">
-        <h2>Horaire</h2>
-        <p>Voici les horaires des messes et activités...</p>
+        <h2>Horaires des messes et informations liturgiques</h2>
+        <div class="horaire-semaine">
+            <h3>Messes de semaine</h3>
+            <ul>
+                <li>Lundi au Vendredi : 5h45</li>
+                <li>Samedi : 6h30</li>
+                <li>Jeudi soir : Adoration à 18h30</li>
+                <li>Premier vendredi du mois : Adoration nocturne à partir de 22h</li>
+            </ul>
+        </div>
+        <div class="horaire-dimanche">
+            <h3>Messes du dimanche</h3>
+            <ul>
+                <li>Anticipée (Samedi) : 18h</li>
+                <li>Dimanche : 6h, 8h30, 11h, 18h</li>
+                <li>Dernier dimanche du mois : Messe des malades à 15h (pas de messe à 18h)</li>
+            </ul>
+        </div>
+        <div class="infos-liturgiques">
+            <h3>Informations liturgiques</h3>
+            <ul>
+                <li>Temps liturgique : <strong id="temps-liturgique">Temps Ordinaire</strong></li>
+                <li>Année liturgique : <strong id="annee-liturgique">Année B</strong></li>
+                <li>Couleur liturgique : <span id="couleur-liturgique" class="couleur-vert">Bleu</span></li>
+            </ul>
+        </div>
     </div>
 
     <div id="calendrier" class="tab-content">
         <h2>Calendrier liturgique</h2>
-        <p>Ici le calendrier liturgique...</p>
+        <p>Contenu à venir...</p>
     </div>
 
     <div id="evangile" class="tab-content">
         <h2>Évangile du jour</h2>
-        <p>Texte de l'évangile du jour...</p>
+        <p>Contenu à venir...</p>
     </div>
 
     <script>
-        function openTab(tabId) {
-            // Cacher tous les contenus
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
+        const tabs = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.tab-content');
 
-            // Enlever l'état actif des boutons
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Retirer la classe active partout
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
 
-            // Activer le contenu cliqué
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
+                // Ajouter la classe active au bouton et au contenu correspondant
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
     </script>
 
 </body>

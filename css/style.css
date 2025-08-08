@@ -198,3 +198,95 @@ body {
     font-size: 1em;
   }
 }
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: #2e7d32; /* vert sombre */
+    padding: 12px 10px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background-color: #a5d6a7; /* vert clair */
+    color: #1b5e20; /* vert foncé */
+    border: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #81c784;
+    color: white;
+}
+
+.tab-button.active {
+    background-color: #1b5e20;
+    color: white;
+}
+
+.tab-content {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.tab-content h3 {
+    color: #1b5e20;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    border-bottom: 2px solid #81c784;
+    padding-bottom: 6px;
+}
+
+.tab-content ul {
+    list-style-type: square;
+    margin-left: 20px;
+    font-size: 1.1em;
+    color: #2e7d32;
+}
+
+.infos-liturgiques ul li {
+    margin-bottom: 8px;
+}
+
+.couleur-vert {
+    color: #388e3c;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .tabs {
+        gap: 8px;
+        padding: 8px 5px;
+    }
+    .tab-button {
+        flex: 1 1 100%;
+        font-size: 1.1em;
+        padding: 12px 0;
+    }
+    .tab-content {
+        padding: 15px 15px;
+        margin: 15px;
+    }
+}
