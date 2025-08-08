@@ -88,6 +88,82 @@
             color: #0d47a1;
         }
 
+        /* Styles pour l'onglet Références bibliques */
+        #References\ bibliques\ Quotidienne > h2 {
+            background-color: #0d47a1;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 800;
+            font-size: 2em;
+        }
+
+        #References\ bibliques\ Quotidienne h3 {
+            background-color: #42a5f5;
+            color: #0d47a1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        #References\ bibliques\ Quotidienne p {
+            font-size: 1.1em;
+            color: #0d47a1;
+            margin-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Styles pour l'onglet Évangile du jour */
+        #evangile > h2 {
+            background-color: #0d47a1; /* Bleu foncé */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 800;
+            font-size: 2em;
+        }
+
+        .evangile-text {
+            background-color: #e3f2fd; /* bleu très clair */
+            border-left: 5px solid #1976d2; /* bleu vif */
+            padding: 20px;
+            border-radius: 10px;
+            color: #0d47a1; /* bleu foncé */
+            font-size: 1.1em;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .evangile-text blockquote {
+            margin-left: 20px;
+            font-style: italic;
+            color: #1565c0;
+            border-left: 4px solid #42a5f5;
+            padding-left: 15px;
+            background-color: #bbdefb;
+            border-radius: 6px;
+        }
+
+        .evangile-text strong {
+            color: #0d47a1;
+            font-weight: 700;
+        }
+
+        .evangile-text em {
+            color: #1976d2;
+            font-style: normal;
+            font-weight: 600;
+        }
+
         /* Responsive pour petits écrans */
         @media (max-width: 600px) {
             .tab-button {
@@ -102,7 +178,7 @@
     <!-- Onglets -->
     <div class="tabs">
         <button class="tab-button active" data-tab="horaire">Horaire</button>
-        <button class="tab-button" data-tab="calendrier">Calendrier liturgique</button>
+        <button class="tab-button" data-tab="References bibliques Quotidienne">Références bibliques quotidiennes</button>
         <button class="tab-button" data-tab="evangile">Évangile du jour</button>
     </div>
 
@@ -135,14 +211,60 @@
         </div>
     </div>
 
-    <div id="calendrier" class="tab-content">
-        <h2>Calendrier liturgique</h2>
-        <p>Contenu à venir...</p>
+    <div id="References bibliques Quotidienne" class="tab-content">
+        <h2>Références bibliques quotidiennes</h2>
+        <div>
+            <h3>Première lecture</h3>
+            <p>Dt 4, 32-40</p>
+        </div>
+        <div>
+            <h3>Psaume</h3>
+            <p>Ps 76 (77), 12-13, 14-15, 16.21</p>
+        </div>
+        <div>
+            <h3>Évangile</h3>
+            <p>Mt 16, 24-28</p>
+        </div>
     </div>
 
     <div id="evangile" class="tab-content">
         <h2>Évangile du jour</h2>
-        <p>Contenu à venir...</p>
+        <div class="evangile-text">
+          <p><em>« Que pourra donner l’homme en échange de sa vie ? »</em><br>
+          <strong>Alléluia. Alléluia.</strong><br>
+          Heureux ceux qui sont persécutés pour la justice,<br>
+          car le royaume des Cieux est à eux !<br>
+          <strong>Alléluia.</strong></p>
+
+          <p><strong>Évangile de Jésus Christ selon saint Matthieu - Mt 16, 24-28</strong></p>
+
+          <p>En ce temps-là, Jésus disait à ses disciples :</p>
+
+          <blockquote>
+            « Si quelqu’un veut marcher à ma suite,<br>
+            qu’il renonce à lui-même,<br>
+            qu’il prenne sa croix<br>
+            et qu’il me suive.<br>
+            Car celui qui veut sauver sa vie<br>
+            la perdra,<br>
+            mais qui perd sa vie à cause de moi<br>
+            la trouvera.<br>
+            Quel avantage, en effet, un homme aura-t-il<br>
+            à gagner le monde entier,<br>
+            si c’est au prix de sa vie ?<br>
+            Et que pourra-t-il donner en échange de sa vie ?<br>
+            Car le Fils de l’homme va venir avec ses anges<br>
+            dans la gloire de son Père ;<br>
+            alors il rendra à chacun selon sa conduite.<br>
+            Amen, je vous le dis :<br>
+            parmi ceux qui sont ici,<br>
+            certains ne connaîtront pas la mort<br>
+            avant d’avoir vu le Fils de l’homme<br>
+            venir dans son Règne. »
+          </blockquote>
+
+          <p><em>– Acclamons la Parole de Dieu.</em></p>
+        </div>
     </div>
 
     <script>
