@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact</title>
-    <link rel="stylesheet" href="css/style.css">  <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #222;
+        }
+        header h1 {
+            color: #0d47a1;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        section {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #1976d2;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 8px 0;
+            text-align: center;
+        }
+        a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        iframe {
+            display: block;
+            margin: 25px auto 0;
+            border: 0;
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -11,9 +61,17 @@
     </header>
     <section>
         <h2>Comment nous joindre ?</h2>
-        <p>E-mail : contact@paroisse-demakope.com</p>
-        <p>WhatsApp : +228 90 00 00 00</p>
-        <p>Localisation : <a href="https://www.google.com/maps?q=Demakpoe">Voir sur Google Maps</a></p>
+        <p>E-mail : <a href="mailto:contact@paroisse-demakope.com">contact@paroisse-demakope.com</a></p>
+        <p>WhatsApp : <a href="https://wa.me/22890000000" target="_blank" rel="noopener">+228 90 00 00 00</a></p>
+        <p>Localisation :</p>
+
+        <!-- Iframe Google Maps -->
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.442610384343!2d1.5249733143768675!3d6.130964395553801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdbdeb02f6cc8a1%3A0x40f8f6e2078edbd8!2sDemakpoe%2C%20Togo!5e0!3m2!1sfr!2sfr!4v1691538187654!5m2!1sfr!2sfr"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </section>
 </body>
 </html>
