@@ -1,17 +1,57 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Programme</title>
-    <link rel="stylesheet" href="css/style.css">  <!-- Lien vers le fichier CSS -->
-</head>
-<body>
-    <header>
-        <h1>Le Programme des Messes</h1>
-    </header>
-    <section>
-        <h2>Le planning des messes et des événements</h2>
-        <p>Le programme des messes et événements de la paroisse sera affiché ici.</p>
-    </section>
-</body>
-</html>
+<section class="calendrier-liturgique">
+  <h2>Calendrier liturgique et horaires des messes</h2>
+
+  <div class="tabs">
+    <nav class="tab-nav">
+      <button class="tab-link active" data-tab="horaires">Horaires des messes</button>
+      <button class="tab-link" data-tab="calendrier">Calendrier liturgique</button>
+      <button class="tab-link" data-tab="evangile">Évangile du jour</button>
+    </nav>
+
+    <div class="tab-content active" id="horaires">
+      <h3>Messes de semaine</h3>
+      <ul>
+        <li>Lundi à Vendredi : 5h45</li>
+        <li>Samedi matin : 6h30</li>
+        <li>Jeudi soir - Adoration : 18h30</li>
+        <li>Premier vendredi du mois - Adoration nocturne : 22h00</li>
+      </ul>
+
+      <h3>Messes du dimanche</h3>
+      <ul>
+        <li>Samedi soir - Messe anticipée : 18h00</li>
+        <li>Dimanche : 6h00, 8h30, 11h00</li>
+        <li>Dernier dimanche du mois - Messe des malades : 15h00</li>
+        <li>Pas de messe à 18h00 le dimanche</li>
+      </ul>
+    </div>
+
+    <div class="tab-content" id="calendrier">
+      <h3>Informations Liturgiques</h3>
+      <p>Le temps liturgique actuel est le Temps Ordinaire. L'année liturgique est l'année A. La couleur liturgique est le vert.</p>
+      <!-- Tu peux mettre plus d’infos ici -->
+    </div>
+
+    <div class="tab-content" id="evangile">
+      <h3>Évangile du jour</h3>
+      <p><em>"Heureux les pauvres en esprit, car le royaume des cieux est à eux." (Matthieu 5:3)</em></p>
+      <!-- À remplacer par l’évangile du jour réel -->
+    </div>
+  </div>
+</section>
+
+<script>
+  // Script simple pour gérer les onglets
+  const tabLinks = document.querySelectorAll('.tab-link');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabLinks.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabLinks.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(tc => tc.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
