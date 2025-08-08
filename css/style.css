@@ -107,7 +107,7 @@ nav a:hover {
 }
 
 .logo-paroisse {
-    max-width: 150px;
+    max-width: 100px;  /* taille réduite */
     height: auto;
     display: block;
     margin: 0 auto 10px auto; /* centrer avec marge en bas */
@@ -144,5 +144,3 @@ nav a:hover {
 .menu-principal a:hover {
     text-decoration: underline;
 }
-
-
