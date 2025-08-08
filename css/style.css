@@ -4,13 +4,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-
-    /* Ajout image de fond */
-   
-    color: #fff;                      /* Texte blanc pour contraste */
 }
 
-/* Le reste de ton CSS reste inchangé */
 header {
     background-color: #4CAF50;
     color: white;
@@ -18,4 +13,136 @@ header {
     padding: 10px 0;
 }
 
-/* ... suite inchangée ... */
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+section {
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    font-size: 1em;
+    width: 100%;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+div {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+div img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+nav {
+    background-color: #007BFF; /* Bleu */
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+.header-paroisse {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF; /* bleu */
+    color: white;
+}
+
+.logo-paroisse {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* centrer avec marge en bas */
+}
+
+.titre-paroisse {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.menu-principal {
+    background-color: #0056b3; /* bleu foncé ou celui que tu préfères */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.menu-principal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-principal li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-principal a:hover {
+    text-decoration: underline;
+}
+
+
