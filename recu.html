@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reçu Intention de Messe</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
+      margin: 0; padding: 20px;
+      color: #0d47a1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    main {
+      background: white;
+      max-width: 700px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 30px 40px 40px;
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      user-select: text;
+    }
+    h2 {
+      color: #0d47a1;
+      font-weight: 900;
+      font-size: 2rem;
+      text-align: center;
+      margin: 0 0 20px;
+      user-select: none;
+    }
+    #logo {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 120px;
+      height: auto;
+      user-select: none;
+    }
+    .recap {
+      border-left: 6px solid #1565c0;
+      padding-left: 20px;
+      color: #1565c0;
+      font-weight: 600;
+      font-size: 1.15rem;
+    }
+    .recap p {
+      margin: 10px 0;
+    }
+    button {
+      background-color: #1565c0;
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
+      user-select: none;
+      transition: background-color 0.3s ease;
+      align-self: center;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #0d47a1;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555555;
+      text-align: center;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 style="text-align:center; color:#0d47a1; user-select:none;">Reçu de votre intention de messe</h1>
+</header>
+
+<main>
+  <img id="logo" src="images/logo.jpg" alt="Logo Paroisse" />
+
+  <div class="recap" id="recapitulatif">
+    <!-- Récap des infos -->
+  </div>
+
+  
+</main>
+
+<div class="footer">
+  Merci de votre contribution. Que Dieu vous bénisse.
+</div>
+
+
+<script>
+  const tarifs = {
+    "Messe de semaine": 1500,
+    "Messe du dimanche": 3500,
+    "Tridum": 0,
+    "Neuvaine": 0
+  };
+
+  const dataStr = sessionStorage.getItem('intentionMesseData');
+
+  if (!dataStr) {
+    document.getElementById('recapitulatif').innerHTML = "<p style='color:red; font-weight:bold;'>Aucune donnée trouvée. Veuillez remplir le formulaire avant.</p>";
+    document.getElementById('download-btn').disabled = true;
+  } else {
+    const data = JSON.parse(dataStr);
+
+    let montant = tarifs[data.type_messe];
+    let montantAffiche = montant > 0 ? montant + " FCFA" : "Montant non défini";
+
+    const recapDiv = document.getElementById('recapitulatif');
+    recapDiv.innerHTML = `
+      <p><strong>Nom :</strong> ${data.nom}</p>
+      <p><strong>Date de l’intention :</strong> ${data.date}</p>
+      <p><strong>Type de messe :</strong> ${data.type_messe}</p>
+      <p><strong>Heure souhaitée :</strong> ${data.heure}</p>
+      <p><strong>Intention :</strong> ${data.intention}</p>
+      <p><strong>Contact :</strong> ${data.contact}</p>
+      <p><strong>Montant à payer :</strong> ${montantAffiche}</p>
+    `;
+
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Logo base64 (remplace par ta chaîne base64 si tu veux un vrai logo dans PDF)
+      const logoBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABR0lEQVR4nO3XMQ7CQBSA4bdZ+z/wq6yrAg1kTRlIRY6nSK7IyPaSRuL/ZZ31vmxYQUvGwgAwAAAAAAAAAAOAGc59Lz1Bpl+1f2Zdbw+AXA7A9pPefIcqNJf+dSQeGDXq8/WlZkxQb3qzcy9PPfpmjRvzPjpD9Xi61fR/dC0+geLgN5cyiDxr/Zcok3fvnSf7PPvyPr+3xTn1qtEAPXnjQKJ05yM9v8bO5AyXTs6Rm6WZ+eD33oE6d+rK0ZIzrPTxbNPPl3d/XkmQ6PU+/8YQQAAAAAAAAAAIBh+QDBlxttCeHAn+AAAAAElFTkSuQmCC";
+
+      // Ajout du logo en haut gauche
+      doc.addImage(logoBase64, 'PNG', 15, 10, 40, 30);
+
+      // Titre avec fond bleu clair arrondi
+      doc.setDrawColor(13, 71, 161);
+      doc.setFillColor(224, 239, 255);
+      doc.roundedRect(14, 45, 180, 16, 5, 5, 'F');
+
+      doc.setFontSize(18);
+      doc.setTextColor("#0d47a1");
+      doc.setFont("helvetica", "bold");
+      doc.text("Reçu de votre intention de messe", 105, 57, { align: 'center' });
+
+      // Ligne de séparation
+      doc.setDrawColor(13, 71, 161);
+      doc.setLineWidth(0.7);
+      doc.line(14, 62, 194, 62);
+
+      // Texte contenu
+      doc.setFontSize(12);
+      doc.setTextColor("black");
+      doc.setFont("helvetica", "normal");
+
+      let y = 75;
+      const lineHeight = 10;
+
+      const lignes = [
+        `Nom : ${data.nom}`,
+        `Date de l'intention : ${data.date}`,
+        `Type de messe : ${data.type_messe}`,
+        `Heure souhaitée : ${data.heure}`,
+        `Intention : ${data.intention}`,
+        `Contact : ${data.contact}`,
+        `Montant à payer : ${montantAffiche}`
+      ];
+
+      lignes.forEach(ligne => {
+        doc.text(ligne, 15, y);
+        y += lineHeight;
+      });
+
+      // Message remerciement
+      doc.setFontSize(10);
+      doc.setTextColor("#555555");
+      doc.setFont("helvetica", "italic");
+      doc.text("Merci de votre contribution. Que Dieu vous bénisse.", 15, y + 10);
+
+      doc.save("recu_intention_messe.pdf");
+    });
+  }
+</script>
+
+</body>
+</html>

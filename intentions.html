@@ -3,66 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Intentions de Messe</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Demande de Messe</title>
   <style>
+    /* Reset minimal */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
       margin: 0;
-      padding: 0 15px 30px 15px;
+      padding: 20px;
       color: #0d47a1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
     header {
-      background-color: #1976d2;
+      background-color: #1565c0;
+      width: 100%;
+      max-width: 700px;
+      padding: 30px 20px;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 6px 15px rgba(21, 101, 192, 0.6);
+      text-align: center;
       color: white;
-      padding: 25px 15px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      border-radius: 0 0 15px 15px;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      font-weight: 800;
-    }
-
-    section {
-      max-width: 600px;
-      background: white;
-      margin: 0 auto;
-      padding: 30px 25px;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-
-    section h2 {
-      text-align: center;
-      color: #0d47a1;
+      font-weight: 900;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      user-select: none;
       margin-bottom: 25px;
-      font-weight: 800;
-      font-size: 2em;
     }
-
+    section {
+      background: white;
+      max-width: 700px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 35px 40px 40px;
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+    }
+    h2 {
+      text-align: center;
+      font-weight: 900;
+      color: #0d47a1;
+      margin-bottom: 35px;
+      font-size: 2rem;
+      letter-spacing: 1.2px;
+    }
     form {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 22px;
     }
-
+    label {
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 6px;
+      user-select: none;
+      font-size: 1.1rem;
+    }
     input[type="text"],
     input[type="date"],
     input[type="time"],
     textarea {
-      padding: 12px 15px;
-      font-size: 1.1em;
+      padding: 14px 18px;
+      font-size: 1.1rem;
       border: 2px solid #1976d2;
-      border-radius: 8px;
-      transition: border-color 0.3s;
-      resize: vertical;
+      border-radius: 10px;
+      transition: border-color 0.3s, box-shadow 0.3s;
       font-family: inherit;
+      resize: vertical;
+      color: #0d47a1;
     }
     input[type="text"]:focus,
     input[type="date"]:focus,
@@ -70,87 +82,75 @@
     textarea:focus {
       border-color: #0d47a1;
       outline: none;
-      box-shadow: 0 0 6px #0d47a1aa;
+      box-shadow: 0 0 10px #0d47a1aa;
     }
     textarea {
-      min-height: 100px;
+      min-height: 120px;
     }
-
-    label {
-      font-weight: 700;
-      color: #1565c0;
-      margin-bottom: 6px;
-      user-select: none;
-    }
-
     /* Radio group */
     .radio-group {
       display: flex;
-      gap: 25px;
+      gap: 30px;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
     }
     .radio-group input[type="radio"] {
-      accent-color: #1976d2;
+      accent-color: #1565c0;
       cursor: pointer;
+      width: 18px;
+      height: 18px;
     }
     .radio-group label {
       font-weight: 600;
       cursor: pointer;
       color: #0d47a1;
+      user-select: none;
+      font-size: 1.05rem;
     }
-
     button[type="submit"] {
-      background-color: #1976d2;
+      background-color: #1565c0;
       color: white;
-      font-weight: 700;
-      font-size: 1.2em;
-      padding: 15px 0;
+      font-weight: 900;
+      font-size: 1.3rem;
+      padding: 16px 0;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background-color 0.3s;
-      margin-top: 10px;
-      box-shadow: 0 3px 8px rgba(25, 118, 210, 0.6);
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
+      user-select: none;
+      letter-spacing: 1.2px;
     }
-    button[type="submit"]:hover {
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
       background-color: #0d47a1;
+      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.85);
+      outline: none;
     }
-
-    /* Encadré infos paiement & tarifs */
-    .info-box {
-      background: #bbdefb;
-      border-left: 5px solid #1976d2;
-      padding: 18px 20px;
-      border-radius: 10px;
-      margin-bottom: 30px;
-      color: #0d47a1;
+    #confirmation-message {
+      text-align: center;
       font-weight: 700;
-      font-size: 1.1em;
-      box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
-    }
-    .info-box strong {
-      color: #0d47a1;
-    }
-
-    /* Tarifs list */
-    .tarifs-list {
-      list-style: none;
-      padding-left: 0;
-      font-weight: 600;
-      color: #0d47a1;
-      margin: 8px 0 0 0;
-    }
-    .tarifs-list li {
-      margin-bottom: 6px;
+      font-size: 1.2rem;
+      margin-top: 28px;
+      color: #2e7d32; /* vert foncé */
+      user-select: none;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
+      header {
+        font-size: 2rem;
+        padding: 22px 15px;
+      }
       section {
-        padding: 25px 20px;
+        padding: 25px 20px 30px;
+      }
+      .radio-group {
+        gap: 18px;
       }
       button[type="submit"] {
-        font-size: 1em;
+        font-size: 1.1rem;
+        padding: 14px 0;
       }
     }
   </style>
@@ -158,23 +158,13 @@
 <body>
 
 <header>
-  <h1>Intentions de Messe</h1>
+  Demande de Messe
 </header>
 
 <section>
   <h2>Soumettez vos intentions de messe</h2>
 
-  <div class="info-box">
-    Pour la transaction, envoyez votre contribution via Tmoney ou Flooz au numéro : <strong>+228 90 00 00 00</strong>.
-    <br />
-    <em>Merci de préciser le motif "Intention de messe".</em>
-    <ul class="tarifs-list">
-      <li><strong>Messes de semaine :</strong> 1500 FCFA</li>
-      <li><strong>Messes du dimanche :</strong> 3500 FCFA</li>
-    </ul>
-  </div>
-
-  <form action="https://formspree.io/f/xovlplzr" method="POST">
+  <form id="intention-form">
     <label for="nom">Votre nom</label>
     <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
 
@@ -188,6 +178,12 @@
 
       <input type="radio" id="messe-dimanche" name="type_messe" value="Messe du dimanche" required />
       <label for="messe-dimanche">Messe du dimanche</label>
+
+      <input type="radio" id="Tridum" name="type_messe" value="Tridum" required />
+      <label for="Tridum">Tridum</label>
+
+      <input type="radio" id="Neuvaine" name="type_messe" value="Neuvaine" required />
+      <label for="Neuvaine">Neuvaine</label>
     </div>
 
     <label for="heure">Heure souhaitée (ex: 8:30)</label>
@@ -201,7 +197,40 @@
 
     <button type="submit">Envoyer</button>
   </form>
+
+  <div id="confirmation-message" style="display:none;">
+    Merci, votre formulaire est bien envoyé ! Vous allez être redirigé…
+  </div>
 </section>
+
+<script>
+  const form = document.getElementById('intention-form');
+  const confirmation = document.getElementById('confirmation-message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Collecte des données
+    const data = {
+      nom: form.nom.value.trim(),
+      date: form.date.value,
+      type_messe: form.type_messe.value,
+      heure: form.heure.value,
+      intention: form.intention.value.trim(),
+      contact: form.contact.value.trim()
+    };
+
+    // Stockage dans sessionStorage
+    sessionStorage.setItem('intentionMesseData', JSON.stringify(data));
+
+    confirmation.style.display = 'block';
+
+    // Redirection après 2.5 secondes vers page paiement
+    setTimeout(() => {
+      window.location.href = 'paiement.html';
+    }, 2500);
+  });
+</script>
 
 </body>
 </html>
