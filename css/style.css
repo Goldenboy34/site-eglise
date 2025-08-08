@@ -430,3 +430,23 @@ header {
     color: #0066cc;
     margin-bottom: 15px;
 }
+/* Styles pour mobiles */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .contact-info, .contact-map {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    iframe {
+        height: 250px;
+    }
+}
+iframe {
+    width: 100%;
+    border: none;
+}
