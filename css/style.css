@@ -144,3 +144,67 @@ nav a:hover {
 .menu-principal a:hover {
     text-decoration: underline;
 }
+/* Section Accueil - équipe pastorale et citation */
+.accueil-info {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background: linear-gradient(135deg, #d0e8ff, #a9c9ff);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a2e6e;
+  text-align: center;
+}
+
+.accueil-info h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.equipe-pastorale {
+  margin-bottom: 25px;
+}
+
+.equipe-pastorale h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #073763;
+  border-bottom: 2px solid #073763;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.equipe-pastorale ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.equipe-pastorale li {
+  font-size: 1.15em;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.citation-spirituelle {
+  font-style: italic;
+  font-size: 1.1em;
+  color: #344772;
+  border-left: 4px solid #073763;
+  padding-left: 15px;
+  margin-top: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.citation-spirituelle footer {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #1a2e6e;
+}
