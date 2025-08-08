@@ -241,3 +241,45 @@ nav a:hover {
     font-size: 1em;
   }
 }
+/* Barre d’onglets */
+.tabs {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne sur petit écran */
+    justify-content: center;
+    gap: 10px;
+    background-color: #4CAF50;
+    padding: 10px;
+}
+
+.tab-button {
+    background-color: white;
+    color: #4CAF50;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Responsive pour iPhone */
+@media (max-width: 600px) {
+    .tab-button {
+        flex: 1 1 100%; /* Chaque bouton prend toute la largeur */
+        text-align: center;
+    }
+}

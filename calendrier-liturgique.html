@@ -1,57 +1,97 @@
-<section class="calendrier-liturgique">
-  <h2>Calendrier liturgique et horaires des messes</h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onglets simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-  <div class="tabs">
-    <nav class="tab-nav">
-      <button class="tab-link active" data-tab="horaires">Horaires des messes</button>
-      <button class="tab-link" data-tab="calendrier">Calendrier liturgique</button>
-      <button class="tab-link" data-tab="evangile">Évangile du jour</button>
-    </nav>
+        /* Style des onglets */
+        .tabs {
+            display: flex;
+            background-color: #4CAF50;
+        }
 
-    <div class="tab-content active" id="horaires">
-      <h3>Messes de semaine</h3>
-      <ul>
-        <li>Lundi à Vendredi : 5h45</li>
-        <li>Samedi matin : 6h30</li>
-        <li>Jeudi soir - Adoration : 18h30</li>
-        <li>Premier vendredi du mois - Adoration nocturne : 22h00</li>
-      </ul>
+        .tab-button {
+            flex: 1;
+            padding: 14px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            background-color: #4CAF50;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
 
-      <h3>Messes du dimanche</h3>
-      <ul>
-        <li>Samedi soir - Messe anticipée : 18h00</li>
-        <li>Dimanche : 6h00, 8h30, 11h00</li>
-        <li>Dernier dimanche du mois - Messe des malades : 15h00</li>
-        <li>Pas de messe à 18h00 le dimanche</li>
-      </ul>
+        .tab-button:hover {
+            background-color: #45a049;
+        }
+
+        .tab-button.active {
+            background-color: #2e7031;
+        }
+
+        /* Contenu */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Onglets -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('horaire')">Horaire</button>
+        <button class="tab-button" onclick="openTab('calendrier')">Calendrier liturgique</button>
+        <button class="tab-button" onclick="openTab('evangile')">Évangile du jour</button>
     </div>
 
-    <div class="tab-content" id="calendrier">
-      <h3>Informations Liturgiques</h3>
-      <p>Le temps liturgique actuel est le Temps Ordinaire. L'année liturgique est l'année A. La couleur liturgique est le vert.</p>
-      <!-- Tu peux mettre plus d’infos ici -->
+    <!-- Contenus -->
+    <div id="horaire" class="tab-content active">
+        <h2>Horaire</h2>
+        <p>Voici les horaires des messes et activités...</p>
     </div>
 
-    <div class="tab-content" id="evangile">
-      <h3>Évangile du jour</h3>
-      <p><em>"Heureux les pauvres en esprit, car le royaume des cieux est à eux." (Matthieu 5:3)</em></p>
-      <!-- À remplacer par l’évangile du jour réel -->
+    <div id="calendrier" class="tab-content">
+        <h2>Calendrier liturgique</h2>
+        <p>Ici le calendrier liturgique...</p>
     </div>
-  </div>
-</section>
 
-<script>
-  // Script simple pour gérer les onglets
-  const tabLinks = document.querySelectorAll('.tab-link');
-  const tabContents = document.querySelectorAll('.tab-content');
+    <div id="evangile" class="tab-content">
+        <h2>Évangile du jour</h2>
+        <p>Texte de l'évangile du jour...</p>
+    </div>
 
-  tabLinks.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabLinks.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(tc => tc.classList.remove('active'));
+    <script>
+        function openTab(tabId) {
+            // Cacher tous les contenus
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
 
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
-</script>
+            // Enlever l'état actif des boutons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Activer le contenu cliqué
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
