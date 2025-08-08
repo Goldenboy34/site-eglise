@@ -7,22 +7,27 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="header-paroisse">
-        <img src="images/logo.jpg"  class="logo-paroisse" />
-        <h1 class="titre-paroisse">Paroisse Notre Dame de l’Assomption De Demakpoè</h1>
-    </header>
 
-    <nav class="menu-principal">
-        <ul>
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.jpg" alt="Logo paroisse" class="logo-paroisse-nav" />
+            Paroisse NDA de Demakpoè 
+        </a>
+        <div class="menu-icon" id="menu-icon">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="calendrier-liturgique.html">Calendrier liturgique et horaires des messes</a></li>
+            <li><a href="calendrier-liturgique.html">Calendrier</a></li>
+            
             <li><a href="activites.html">Activités</a></li>
             <li><a href="intentions.html">Intentions de Messe</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+</nav>
 
-  <section class="accueil-info">
+<section class="accueil-info">
   <h2>Bienvenue à la Paroisse Notre Dame de l’Assomption de Demakpoè</h2>
 
   <div class="equipe-pastorale">
@@ -42,3 +47,13 @@
     <footer>— Saint Augustin</footer>
   </blockquote>
 </section>
+
+<!-- Script pour menu responsive -->
+<script>
+    document.getElementById('menu-icon').addEventListener('click', function() {
+        document.getElementById('nav-links').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

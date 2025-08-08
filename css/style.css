@@ -1,4 +1,6 @@
 /* style.css */
+
+/* Reset & base */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,150 +8,105 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+/* Logo dans la navbar */
+.logo-paroisse-nav {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 8px;
 }
 
-h1 {
-    font-size: 2.5em;
+/* Navbar container */
+.navbar {
+    background-color: #007BFF;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-h2 {
-    font-size: 1.5em;
-}
-
-section {
-    padding: 20px;
-}
-
-form {
+.nav-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-form input, form textarea {
-    padding: 10px;
-    font-size: 1em;
-    width: 100%;
-}
-
-form button {
-    background-color: #4CAF50;
+/* Logo text + image */
+.logo {
     color: white;
-    padding: 10px;
-    font-size: 1.2em;
-    border: none;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Menu links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Menu burger icon */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: white;
     cursor: pointer;
 }
 
-form button:hover {
-    background-color: #45a049;
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 60px; /* hauteur navbar */
+        right: -100%;
+        background-color: #007BFF;
+        height: 100vh;
+        width: 220px;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: block;
+    }
 }
 
-div {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-div img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
-}
-
-nav {
-    background-color: #333;
-    padding: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-nav {
-    background-color: #007BFF; /* Bleu */
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-.header-paroisse {
-    text-align: center;
-    padding: 20px;
-    background-color: #007BFF; /* bleu */
-    color: white;
-}
-
-.logo-paroisse {
-    max-width: 100px;  /* taille réduite */
-    height: auto;
-    display: block;
-    margin: 0 auto 10px auto; /* centrer avec marge en bas */
-}
-
-.titre-paroisse {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: bold;
-}
-
-.menu-principal {
-    background-color: #0056b3; /* bleu foncé ou celui que tu préfères */
-    padding: 10px 0;
-    text-align: center;
-}
-
-.menu-principal ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-principal li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.menu-principal a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.menu-principal a:hover {
-    text-decoration: underline;
-}
-
-/* Section Accueil - équipe pastorale et citation */
+/* Section Accueil */
 .accueil-info {
   max-width: 720px;
   margin: 40px auto;
@@ -240,46 +197,4 @@ nav a:hover {
     border-left-width: 3px;
     font-size: 1em;
   }
-}
-/* Barre d’onglets */
-.tabs {
-    display: flex;
-    flex-wrap: wrap; /* Permet de passer à la ligne sur petit écran */
-    justify-content: center;
-    gap: 10px;
-    background-color: #4CAF50;
-    padding: 10px;
-}
-
-.tab-button {
-    background-color: white;
-    color: #4CAF50;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.tab-button:hover {
-    background-color: #45a049;
-    color: white;
-}
-
-.tab-content {
-    display: none;
-    padding: 20px;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-/* Responsive pour iPhone */
-@media (max-width: 600px) {
-    .tab-button {
-        flex: 1 1 100%; /* Chaque bouton prend toute la largeur */
-        text-align: center;
-    }
 }
