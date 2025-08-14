@@ -1,51 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paiement</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmation Paiement</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
+      margin: 0; padding: 20px;
+      color: #0d47a1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    main {
+      background: white;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+      text-align: center;
+    }
+    h2 {
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      user-select: none;
+    }
+    button {
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 25px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 10px;
+      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0d47a1;
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      <img src="images/logo.jpg" alt="Logo Paroisse" class="logo-paroisse-nav">
-      Paroisse Demakope
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="activites.html">Activités</a></li>
-      <li><a href="intention.html">Intention de messe</a></li>
-      <li><a href="paiement.html" class="active">Paiement</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-  </div>
-</nav>
+<main>
+  <h2>Avez-vous déjà effectué le paiement ?</h2>
 
-<section class="section-container" style="text-align:center;">
-  <h2>Confirmation Paiement</h2>
-  <p>Veuillez confirmer si le paiement a été effectué.</p>
   <button id="btn-yes">Oui, j'ai payé</button>
   <button id="btn-no">Non, pas encore</button>
-</section>
+</main>
 
 <script>
-function toggleMenu() {
-  document.querySelector('.nav-links').classList.toggle('active');
-}
+  document.getElementById('btn-yes').addEventListener('click', () => {
+    // Redirection vers le reçu
+    window.location.href = 'recu.html';
+  });
 
-document.getElementById('btn-yes').addEventListener('click', ()=>{
-  sessionStorage.setItem('paiementEffectue','true');
-  alert("Merci pour votre paiement. Vous pouvez maintenant remplir le formulaire.");
-  window.location.href = "intention.html";
-});
-
-document.getElementById('btn-no').addEventListener('click', ()=>{
-  alert("Merci de bien vouloir effectuer le paiement via Tmoney ou Flooz au +228 90 00 00 00.\n\nAprès paiement, revenez ici et cliquez sur 'Oui'.");
-});
+  document.getElementById('btn-no').addEventListener('click', () => {
+    alert("Merci de bien vouloir effectuer le paiement via Tmoney ou Flooz au +228 90 00 00 00.\n\nAprès paiement, revenez ici et cliquez sur 'Oui'.");
+  });
 </script>
 
 </body>
