@@ -25,6 +25,13 @@
   </div>
 </nav>
 
+<header class="hero">
+  <div class="hero-content">
+    <h1>Demandez votre Intention de Messe</h1>
+    <p>Remplissez le formulaire ci-dessous et effectuez le paiement pour confirmer votre demande.</p>
+  </div>
+</header>
+
 <section class="section-container">
   <h2>Formulaire d'Intention de Messe</h2>
   <form id="intention-form">
@@ -42,7 +49,9 @@
     <input type="text" id="contact" placeholder="Contact (tel/email)" required>
     <button type="submit" id="submit-btn" disabled>Envoyer (après paiement)</button>
   </form>
-  <p id="paiement-msg" style="color:#0d47a1; margin-top:10px;">Veuillez effectuer le paiement avant d'envoyer le formulaire.</p>
+  <p id="paiement-msg" style="color:#0d47a1; margin-top:15px; text-align:center;">
+    Veuillez effectuer le paiement avant d'envoyer le formulaire.
+  </p>
 </section>
 
 <script>
@@ -50,16 +59,15 @@ function toggleMenu() {
   document.querySelector('.nav-links').classList.toggle('active');
 }
 
-const submitBtn = document.getElementById('submit-btn');
-
 // Activer le formulaire uniquement si paiement effectué
+const submitBtn = document.getElementById('submit-btn');
 const paiementEffectue = sessionStorage.getItem('paiementEffectue') === 'true';
 if(paiementEffectue) {
   submitBtn.disabled = false;
   document.getElementById('paiement-msg').style.display = 'none';
 }
 
-// Sauvegarde des données
+// Sauvegarde des données et redirection vers le reçu
 document.getElementById('intention-form').addEventListener('submit', (e)=>{
   e.preventDefault();
   const data = {
