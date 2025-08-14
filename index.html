@@ -1,58 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paroisse Notre Dame de l’Assomption - Accueil</title>
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paroisse de Demakope</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <img src="images/logo.jpg" alt="Logo paroisse" class="logo-paroisse-nav" />
-            Paroisse NDA de Demakpoè 
-        </a>
-        <div class="menu-icon" id="menu-icon">&#9776;</div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="calendrier-liturgique.html">Calendrier</a></li>
-            
-            <li><a href="activites.html">Activités</a></li>
-            <li><a href="intentions.html">Demande de Messe</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="Logo Paroisse" class="logo-paroisse-nav">
+      Paroisse Demakope
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="activites.html">Activités</a></li>
+      <li><a href="intention.html">Intention de messe</a></li>
+      <li><a href="paiement.html">Paiement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  </div>
 </nav>
 
-<section class="accueil-info">
-  <h2>Bienvenue à la Paroisse Notre Dame de l’Assomption de Demakpoè</h2>
-
-  <div class="equipe-pastorale">
-    <h3>Équipe pastorale</h3>
-    <ul>
-      <li><strong>Curé actuel :</strong> Père Emmanuel MAWUSSI</li>
-      <li><strong>Vicaire :</strong> Père Marc LOPEZ</li>
-    </ul>
-  </div>
-
-  <div class="message-bienvenue">
-    <p>Nous vous souhaitons la bienvenue sur notre site. Que la paix et la joie du Seigneur accompagnent chacun de vos pas.</p>
-  </div>
-
-  <blockquote class="citation-spirituelle">
-    <p>"La foi est la lumière qui éclaire le chemin dans les moments d'obscurité."</p>
-    <footer>— Saint Augustin</footer>
-  </blockquote>
+<section class="section-container accueil-info">
+  <h2>Bienvenue à la Paroisse de Demakope</h2>
+  <p>Nous vous accompagnons dans la prière et la vie spirituelle. Découvrez nos activités, intentions de messe et moyens de contribution.</p>
 </section>
 
-<!-- Script pour menu responsive -->
 <script>
-    document.getElementById('menu-icon').addEventListener('click', function() {
-        document.getElementById('nav-links').classList.toggle('active');
-    });
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('active');
+}
 </script>
 
 </body>

@@ -1,98 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Activités Paroissiales</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fb;
-            margin: 0;
-            padding: 0 15px 30px 15px;
-            color: #0d47a1;
-        }
-        header {
-            background-color: #1976d2;
-            color: white;
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-            border-radius: 0 0 15px 15px;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 800;
-        }
-        .activites-container {
-            max-width: 720px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            padding: 25px 30px;
-        }
-        .activite {
-            margin-bottom: 25px;
-            padding: 15px 20px;
-            border-left: 5px solid #1976d2;
-            background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.2);
-        }
-        .activite h2 {
-            margin-top: 0;
-            color: #0d47a1;
-            font-size: 1.6em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .activite p {
-            font-size: 1.1em;
-            line-height: 1.4;
-            margin: 5px 0;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 0 10px 20px 10px;
-            }
-            header h1 {
-                font-size: 1.9em;
-            }
-            .activites-container {
-                padding: 15px 20px;
-            }
-            .activite h2 {
-                font-size: 1.3em;
-            }
-            .activite p {
-                font-size: 1em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activités</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header>
-    <h1>Les Activités Paroissiales</h1>
-</header>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="Logo Paroisse" class="logo-paroisse-nav">
+      Paroisse Demakope
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="activites.html" class="active">Activités</a></li>
+      <li><a href="intention.html">Intention de messe</a></li>
+      <li><a href="paiement.html">Paiement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  </div>
+</nav>
 
-<div class="activites-container">
-    <div class="activite">
-        <h2>Fête Patronale - 15 août</h2>
-        <p><strong>Messe :</strong> 7h30</p>
-        <p><strong>Procession :</strong> Après la messe, procession avec la statue de la Vierge Marie autour de la paroisse.</p>
-        <p><strong>Pique-nique et soirées traditionnelles :</strong> À partir de 12h, animés par les régions des Plateaux et Maritimes.</p>
-    </div>
+<section class="section-container">
+  <h2>Nos Activités</h2>
+  <div class="activite">
+    <h3>Messes de semaine</h3>
+    <p>Chaque jour de semaine, messe à 7h et 18h.</p>
+  </div>
+  <div class="activite">
+    <h3>Messes dominicales</h3>
+    <p>Chaque dimanche, messe à 9h et 11h.</p>
+  </div>
+  <div class="activite">
+    <h3>Tridums et Neuvaines</h3>
+    <p>Nous accompagnons vos intentions spirituelles pour vos proches.</p>
+  </div>
+</section>
 
-    <div class="activite">
-        <h2>Concert Spirituel - 16 août</h2>
-        <p>Concert organisé par les chorales de la paroisse.</p>
-    </div>
-</div>
+<script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('active');
+}
+</script>
 
 </body>
 </html>

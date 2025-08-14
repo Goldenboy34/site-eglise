@@ -1,235 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demande de Messe</title>
-  <style>
-    /* Reset minimal */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-      margin: 0;
-      padding: 20px;
-      color: #0d47a1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header {
-      background-color: #1565c0;
-      width: 100%;
-      max-width: 700px;
-      padding: 30px 20px;
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 6px 15px rgba(21, 101, 192, 0.6);
-      text-align: center;
-      color: white;
-      font-weight: 900;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      user-select: none;
-      margin-bottom: 25px;
-    }
-    section {
-      background: white;
-      max-width: 700px;
-      width: 100%;
-      border-radius: 12px;
-      padding: 35px 40px 40px;
-      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
-    }
-    h2 {
-      text-align: center;
-      font-weight: 900;
-      color: #0d47a1;
-      margin-bottom: 35px;
-      font-size: 2rem;
-      letter-spacing: 1.2px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-    label {
-      font-weight: 700;
-      color: #0d47a1;
-      margin-bottom: 6px;
-      user-select: none;
-      font-size: 1.1rem;
-    }
-    input[type="text"],
-    input[type="date"],
-    input[type="time"],
-    textarea {
-      padding: 14px 18px;
-      font-size: 1.1rem;
-      border: 2px solid #1976d2;
-      border-radius: 10px;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      font-family: inherit;
-      resize: vertical;
-      color: #0d47a1;
-    }
-    input[type="text"]:focus,
-    input[type="date"]:focus,
-    input[type="time"]:focus,
-    textarea:focus {
-      border-color: #0d47a1;
-      outline: none;
-      box-shadow: 0 0 10px #0d47a1aa;
-    }
-    textarea {
-      min-height: 120px;
-    }
-    /* Radio group */
-    .radio-group {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .radio-group input[type="radio"] {
-      accent-color: #1565c0;
-      cursor: pointer;
-      width: 18px;
-      height: 18px;
-    }
-    .radio-group label {
-      font-weight: 600;
-      cursor: pointer;
-      color: #0d47a1;
-      user-select: none;
-      font-size: 1.05rem;
-    }
-    button[type="submit"] {
-      background-color: #1565c0;
-      color: white;
-      font-weight: 900;
-      font-size: 1.3rem;
-      padding: 16px 0;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
-      user-select: none;
-      letter-spacing: 1.2px;
-    }
-    button[type="submit"]:hover,
-    button[type="submit"]:focus {
-      background-color: #0d47a1;
-      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.85);
-      outline: none;
-    }
-    #confirmation-message {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-top: 28px;
-      color: #2e7d32; /* vert foncé */
-      user-select: none;
-    }
-
-    @media (max-width: 480px) {
-      header {
-        font-size: 2rem;
-        padding: 22px 15px;
-      }
-      section {
-        padding: 25px 20px 30px;
-      }
-      .radio-group {
-        gap: 18px;
-      }
-      button[type="submit"] {
-        font-size: 1.1rem;
-        padding: 14px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intention de Messe</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header>
-  Demande de Messe
-</header>
-
-<section>
-  <h2>Soumettez vos intentions de messe</h2>
-
-  <form id="intention-form">
-    <label for="nom">Votre nom</label>
-    <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
-
-    <label for="date">Date de l’intention</label>
-    <input type="date" id="date" name="date" required />
-
-    <label>Messe souhaitée</label>
-    <div class="radio-group">
-      <input type="radio" id="messe-semaine" name="type_messe" value="Messe de semaine" required />
-      <label for="messe-semaine">Messe de semaine</label>
-
-      <input type="radio" id="messe-dimanche" name="type_messe" value="Messe du dimanche" required />
-      <label for="messe-dimanche">Messe du dimanche</label>
-
-      <input type="radio" id="Tridum" name="type_messe" value="Tridum" required />
-      <label for="Tridum">Tridum</label>
-
-      <input type="radio" id="Neuvaine" name="type_messe" value="Neuvaine" required />
-      <label for="Neuvaine">Neuvaine</label>
-    </div>
-
-    <label for="heure">Heure souhaitée (ex: 8:30)</label>
-    <input type="time" id="heure" name="heure" required />
-
-    <label for="intention">Votre intention</label>
-    <textarea id="intention" name="intention" placeholder="Écrivez votre demande ici" required></textarea>
-
-    <label for="contact">Votre contact (e-mail/WhatsApp)</label>
-    <input type="text" id="contact" name="contact" placeholder="ex: email@example.com ou +228 90 00 00 00" required />
-
-    <button type="submit">Envoyer</button>
-  </form>
-
-  <div id="confirmation-message" style="display:none;">
-    Merci, votre formulaire est bien envoyé ! Vous allez être redirigé…
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jpg" alt="Logo Paroisse" class="logo-paroisse-nav">
+      Paroisse Demakope
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="activites.html">Activités</a></li>
+      <li><a href="intention.html" class="active">Intention de messe</a></li>
+      <li><a href="paiement.html">Paiement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
   </div>
+</nav>
+
+<section class="section-container">
+  <h2>Formulaire d'Intention de Messe</h2>
+  <form id="intention-form">
+    <input type="text" id="nom" placeholder="Votre nom" required>
+    <input type="date" id="date" required>
+    <select id="type_messe" required>
+      <option value="">Type de messe</option>
+      <option value="Messe de semaine">Messe de semaine</option>
+      <option value="Messe du dimanche">Messe du dimanche</option>
+      <option value="Tridum">Tridum</option>
+      <option value="Neuvaine">Neuvaine</option>
+    </select>
+    <input type="time" id="heure" required>
+    <input type="text" id="intention" placeholder="Intention" required>
+    <input type="text" id="contact" placeholder="Contact (tel/email)" required>
+    <button type="submit" id="submit-btn" disabled>Envoyer (après paiement)</button>
+  </form>
+  <p id="paiement-msg" style="color:#0d47a1; margin-top:10px;">Veuillez effectuer le paiement avant d'envoyer le formulaire.</p>
 </section>
 
 <script>
-  const form = document.getElementById('intention-form');
-  const confirmation = document.getElementById('confirmation-message');
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('active');
+}
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+const submitBtn = document.getElementById('submit-btn');
 
-    // Collecte des données
-    const data = {
-      nom: form.nom.value.trim(),
-      date: form.date.value,
-      type_messe: form.type_messe.value,
-      heure: form.heure.value,
-      intention: form.intention.value.trim(),
-      contact: form.contact.value.trim()
-    };
+// Activer le formulaire uniquement si paiement effectué
+const paiementEffectue = sessionStorage.getItem('paiementEffectue') === 'true';
+if(paiementEffectue) {
+  submitBtn.disabled = false;
+  document.getElementById('paiement-msg').style.display = 'none';
+}
 
-    // Stockage dans sessionStorage
-    sessionStorage.setItem('intentionMesseData', JSON.stringify(data));
-
-    confirmation.style.display = 'block';
-
-    // Redirection après 2.5 secondes vers page paiement
-    setTimeout(() => {
-      window.location.href = 'paiement.html';
-    }, 2500);
-  });
+// Sauvegarde des données
+document.getElementById('intention-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const data = {
+    nom: document.getElementById('nom').value,
+    date: document.getElementById('date').value,
+    type_messe: document.getElementById('type_messe').value,
+    heure: document.getElementById('heure').value,
+    intention: document.getElementById('intention').value,
+    contact: document.getElementById('contact').value
+  };
+  sessionStorage.setItem('intentionMesseData', JSON.stringify(data));
+  alert("Intention enregistrée !");
+  window.location.href = "recu.html";
+});
 </script>
 
 </body>
