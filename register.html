@@ -4,79 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inscription</title>
-<link rel="stylesheet" href="css/style.css">
 <style>
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#0d47a1,#1976d2);
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-.form-container {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    width: 350px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    text-align: center;
-}
-h2 {
-    margin-bottom: 25px;
-    color: #0d47a1;
-}
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: #0d47a1;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
-}
-button:hover { background: #1565c0; }
-p a { color: #0d47a1; text-decoration: none; }
+  body {font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; background: #f0f4ff;}
+  main {background:#fff; padding:40px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2); width:100%; max-width:400px;}
+  h1 {text-align:center; color:#0d47a1;}
+  input {width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
+  button {background:#1565c0; color:#fff; padding:12px; border:none; border-radius:12px; cursor:pointer; width:100%; margin-top:10px;}
+  button:hover {background:#0d47a1;}
+  .link {text-align:center; margin-top:15px;}
+  .link a {color:#1565c0; text-decoration:none;}
 </style>
 </head>
 <body>
-<div class="form-container">
-    <h2>Inscription</h2>
-    <form id="registerForm">
-        <input type="text" id="regUsername" placeholder="Nom d'utilisateur" required>
-        <input type="email" id="regEmail" placeholder="Email" required>
-        <input type="password" id="regPassword" placeholder="Mot de passe" required>
-        <button type="submit">S'inscrire</button>
-    </form>
-    <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
-</div>
+<main>
+  <h1>Inscription</h1>
+  <form id="registerForm">
+    <input type="text" id="nom" placeholder="Nom complet" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">S'inscrire</button>
+  </form>
+  <div class="link">
+    <a href="login.html">Déjà inscrit ? Connectez-vous</a>
+  </div>
+</main>
+
 <script>
-const registerForm = document.getElementById("registerForm");
-registerForm.addEventListener("submit", function(e){
+  const registerForm = document.getElementById('registerForm');
+  registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    const username = document.getElementById("regUsername").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value;
-    if(users.some(u => u.username === username)){
-        alert("Nom d'utilisateur déjà utilisé !");
-        return;
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // On stocke localement les utilisateurs
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Vérifie si l'utilisateur existe déjà
+    if(users.find(u => u.email === email)){
+      alert("Cet email est déjà utilisé !");
+      return;
     }
-    users.push({username,email,password});
-    localStorage.setItem("users", JSON.stringify(users));
+
+    users.push({nom,email,password});
+    localStorage.setItem('users', JSON.stringify(users));
     alert("Inscription réussie ! Vous pouvez maintenant vous connecter.");
-    window.location.href = "login.html";
-});
+    window.location.href = 'login.html';
+  });
 </script>
 </body>
 </html>

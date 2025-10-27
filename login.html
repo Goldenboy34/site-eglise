@@ -4,68 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Connexion</title>
-<link rel="stylesheet" href="css/style.css">
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f3f6fb, #d9e8fc);
-  margin: 0; padding: 0;
-  display: flex; justify-content: center; align-items: center; min-height: 100vh;
-}
-.container {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-}
-h2 {color: #0d47a1; margin-bottom: 25px;}
-input {width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border:1px solid #ccc; font-size:1rem;}
-button {
-  width: 100%; padding: 12px; border:none; border-radius:12px;
-  background:#1565c0; color:white; font-weight:700; font-size:1rem;
-  cursor:pointer; transition:0.3s; margin-top:10px;
-}
-button:hover {background:#0d47a1;}
-p {margin-top:15px; font-size:0.9rem;}
-p a {color:#1565c0; text-decoration:none;}
-p a:hover {text-decoration:underline;}
+  body {font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; background: #f0f4ff;}
+  main {background:#fff; padding:40px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2); width:100%; max-width:400px;}
+  h1 {text-align:center; color:#0d47a1;}
+  input {width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
+  button {background:#1565c0; color:#fff; padding:12px; border:none; border-radius:12px; cursor:pointer; width:100%; margin-top:10px;}
+  button:hover {background:#0d47a1;}
+  .link {text-align:center; margin-top:15px;}
+  .link a {color:#1565c0; text-decoration:none;}
 </style>
 </head>
 <body>
-
-<div class="container">
-  <h2>Connexion</h2>
+<main>
+  <h1>Connexion</h1>
   <form id="loginForm">
     <input type="email" id="email" placeholder="Email" required>
     <input type="password" id="password" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
   </form>
-  <p>Pas encore inscrit ? <a href="register.html">Créer un compte</a></p>
-</div>
+  <div class="link">
+    <a href="register.html">Pas encore inscrit ? Créez un compte</a>
+  </div>
+</main>
 
 <script>
-const loginForm = document.getElementById('loginForm');
-loginForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+  const loginForm = document.getElementById('loginForm');
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  let users = JSON.parse(localStorage.getItem('users')) || [];
-  const user = users.find(u => u.email === email && u.password === password);
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
 
-  if(user){
-    // Connexion réussie : stocker l'utilisateur connecté
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    alert("Connexion réussie !");
-    window.location.href = 'index.html'; // Rediriger vers la page d'accueil
-  } else {
-    alert("Email ou mot de passe incorrect !");
-  }
-});
+    if(user){
+      // Sauvegarde session pour utilisation dans le site
+      sessionStorage.setItem('currentUser', JSON.stringify(user));
+      // Redirection vers l'interface principale
+      window.location.href = 'index.html';
+    } else {
+      alert("Email ou mot de passe incorrect !");
+    }
+  });
 </script>
-
 </body>
 </html>

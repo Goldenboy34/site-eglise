@@ -3,65 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tableau de bord</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Interface Paroisse</title>
 <style>
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f4f7fb;
-    margin: 0;
-    min-height: 100vh;
-}
-header {
-    background: #0d47a1;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background: #1565c0;
-}
-nav a {
-    color: white;
-    padding: 15px 20px;
-    text-decoration: none;
-    font-weight: 600;
-}
-nav a:hover { background: #0d47a1; }
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-}
+  body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fb;}
+  header {background:#1976d2; color:#fff; padding:20px; text-align:center;}
+  nav a {margin:0 15px; color:#fff; text-decoration:none; font-weight:700;}
+  .welcome {padding:20px; font-size:1.2em;}
 </style>
 </head>
 <body>
+
 <header>
-    <h1>Bienvenue, <span id="userName"></span></h1>
-</header>
-<nav>
+  <h1>Bienvenue sur l'interface de la paroisse</h1>
+  <nav>
     <a href="activites.html">Activités</a>
     <a href="annonces.html">Annonces</a>
-    <a href="calendrier-liturgique.html">Calendrier Liturgique</a>
-    <a href="demande.html">Demande de Messe</a>
-    <a href="paiement.html">Paiement</a>
+    <a href="calendrier-liturgique.html">Calendrier</a>
     <a href="contact.html">Contact</a>
-    <a href="login.html" id="logout">Déconnexion</a>
-</nav>
-<div class="container">
-    <h2>Tableau de bord</h2>
-    <p>Accédez aux différentes fonctionnalités via le menu ci-dessus.</p>
+    <a href="paiement.html">Demande de messe</a>
+    <a href="#" id="logout">Déconnexion</a>
+  </nav>
+</header>
+
+<div class="welcome">
+  Bonjour <span id="username"></span> ! Vous êtes connecté.
 </div>
+
 <script>
-const user = JSON.parse(sessionStorage.getItem("currentUser"));
-if(!user){ window.location.href="login.html"; }
-document.getElementById("userName").textContent = user.username;
-document.getElementById("logout").addEventListener("click", ()=>{
-    sessionStorage.removeItem("currentUser");
-});
+  // Vérifie si un utilisateur est connecté
+  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  if(!currentUser){
+    window.location.href = 'login.html';
+  } else {
+    document.getElementById('username').textContent = currentUser.nom;
+  }
+
+  document.getElementById('logout').addEventListener('click', () => {
+    sessionStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+  });
 </script>
+
 </body>
 </html>
