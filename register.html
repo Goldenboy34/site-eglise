@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f3f6fb, #d9e8fc);
+  margin: 0; padding: 0;
+  display: flex; justify-content: center; align-items: center; min-height: 100vh;
+}
+.container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+h2 {color: #0d47a1; margin-bottom: 25px;}
+input {width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border:1px solid #ccc; font-size:1rem;}
+button {
+  width: 100%; padding: 12px; border:none; border-radius:12px;
+  background:#1565c0; color:white; font-weight:700; font-size:1rem;
+  cursor:pointer; transition:0.3s; margin-top:10px;
+}
+button:hover {background:#0d47a1;}
+p {margin-top:15px; font-size:0.9rem;}
+p a {color:#1565c0; text-decoration:none;}
+p a:hover {text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Inscription</h2>
+  <form id="registerForm">
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">S'inscrire</button>
+  </form>
+  <p>Déjà inscrit ? <a href="login.html">Connexion</a></p>
+</div>
+
+<script>
+const registerForm = document.getElementById('registerForm');
+registerForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  // Récupérer les utilisateurs existants
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+
+  // Vérifier si email existe déjà
+  if(users.some(u => u.email === email)){
+    alert("Cet email est déjà utilisé !");
+    return;
+  }
+
+  // Ajouter nouvel utilisateur
+  users.push({username, email, password});
+  localStorage.setItem('users', JSON.stringify(users));
+  alert("Inscription réussie !");
+  window.location.href = 'login.html';
+});
+</script>
+
+</body>
+</html>

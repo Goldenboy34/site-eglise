@@ -1,131 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reçu de la Demande de Messe</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #0d47a1, #000000);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    .recu-container {
-      background: #ffffff;
-      color: #000;
-      border-radius: 20px;
-      padding: 30px;
-      width: 400px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-
-    .recu-container h2 {
-      color: #0d47a1;
-      font-size: 1.6em;
-      margin-bottom: 10px;
-    }
-
-    .recu-container p {
-      margin: 6px 0;
-      font-size: 15px;
-      line-height: 1.6;
-      word-wrap: break-word;
-    }
-
-    #recapitulatif strong {
-      color: #0d47a1;
-    }
-
-    /* ✅ Empêche l’intention de déborder visuellement */
-    #recapitulatif p:nth-child(5) {
-      max-height: 120px;
-      overflow-y: auto;
-      background: #f0f4ff;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #90caf9;
-      white-space: pre-wrap;
-    }
-
-    .btn-telecharger {
-      display: inline-block;
-      background-color: #0d47a1;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s ease;
-    }
-
-    .btn-telecharger:hover {
-      background-color: #1565c0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reçu de la Demande de Messe</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0d47a1, #1e3c72);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+.recu-container {
+  background: #ffffff;
+  color: #000;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.recu-container h2 {
+  color: #0d47a1;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+}
+.recu-container p {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+#intention, #paymentPreview {
+  max-height: 150px;
+  overflow-y: auto;
+  background: #f0f4ff;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #90caf9;
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+}
+#paymentPreview img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+.btn-telecharger {
+  display: inline-block;
+  background-color: #0d47a1;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+.btn-telecharger:hover {background-color: #1565c0;}
+</style>
 </head>
 <body>
-  <div class="recu-container">
-    <h2>Reçu de la Demande de Messe</h2>
-    <div id="recapitulatif">
-      <p><strong>Nom&nbsp;:</strong> <span id="nom"></span></p>
-      <p><strong>Email&nbsp;:</strong> <span id="email"></span></p>
-      <p><strong>Date de la messe&nbsp;:</strong> <span id="date"></span></p>
-      <p><strong>Montant&nbsp;:</strong> <span id="montant"></span> FCFA</p>
-      <p><strong>Intention&nbsp;:</strong> <span id="intention"></span></p>
-    </div>
-    <button id="telechargerPDF" class="btn-telecharger">Télécharger le reçu</button>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script>
-    // Récupération des données depuis le stockage local
-    const data = JSON.parse(localStorage.getItem("demandeMesse")) || {};
+<div class="recu-container">
+  <h2>Reçu de la Demande de Messe</h2>
+  <p><strong>Date de la messe :</strong> <span id="date"></span></p>
+  <p><strong>Type de messe :</strong> <span id="type_messe"></span></p>
+  <p><strong>Heure :</strong> <span id="heure"></span></p>
+  <p><strong>Montant :</strong> <span id="montant"></span> FCFA</p>
+  <p><strong>Intention :</strong></p>
+  <div id="intention"></div>
+  <div id="paymentPreview"></div>
+  <button id="telechargerPDF" class="btn-telecharger">Télécharger le reçu</button>
+</div>
 
-    document.getElementById("nom").textContent = data.nom || "";
-    document.getElementById("email").textContent = data.email || "";
-    document.getElementById("date").textContent = data.date || "";
-    document.getElementById("montant").textContent = data.montant || "";
-    document.getElementById("intention").textContent = data.intention || "";
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const data = JSON.parse(localStorage.getItem("demandeMesse")) || {};
 
-    // Génération du reçu PDF
-    document.getElementById("telechargerPDF").addEventListener("click", () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+document.getElementById("date").textContent = data.date || "";
+document.getElementById("type_messe").textContent = data.type_messe || "";
+document.getElementById("heure").textContent = data.heure || "";
+document.getElementById("montant").textContent = data.montant || "";
+document.getElementById("intention").textContent = data.intention || "";
 
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(16);
-      doc.setTextColor(13, 71, 161);
-      doc.text("Reçu de la Demande de Messe", 20, 20);
+// Afficher la preuve de paiement si disponible
+if(data.paymentFile){
+  const img = document.createElement('img');
+  img.src = data.paymentFile;
+  document.getElementById("paymentPreview").appendChild(img);
+}
 
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      let y = 40;
-      doc.text(`Nom : ${data.nom || ""}`, 20, y);
-      y += 10;
-      doc.text(`Email : ${data.email || ""}`, 20, y);
-      y += 10;
-      doc.text(`Date de la messe : ${data.date || ""}`, 20, y);
-      y += 10;
-      doc.text(`Montant : ${data.montant || ""} FCFA`, 20, y);
-      y += 10;
+// Téléchargement PDF
+document.getElementById("telechargerPDF").addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-      // Gestion automatique des textes longs
-      let intentionText = data.intention || "";
-      let splitText = doc.splitTextToSize(`Intention : ${intentionText}`, 170);
-      doc.text(splitText, 20, y + 10);
+  doc.setFontSize(16);
+  doc.setTextColor(13, 71, 161);
+  doc.text("Reçu de la Demande de Messe", 20, 20);
 
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  let y = 35;
+  doc.text(`Date : ${data.date || ""}`, 20, y);
+  y += 8;
+  doc.text(`Type de messe : ${data.type_messe || ""}`, 20, y);
+  y += 8;
+  doc.text(`Heure : ${data.heure || ""}`, 20, y);
+  y += 8;
+  doc.text(`Montant : ${data.montant || ""} FCFA`, 20, y);
+  y += 8;
+
+  let splitIntention = doc.splitTextToSize(`Intention : ${data.intention || ""}`, 170);
+  y += 5;
+  doc.text(splitIntention, 20, y);
+
+  // Ajouter image si présente
+  if(data.paymentFile){
+    const img = new Image();
+    img.src = data.paymentFile;
+    img.onload = function() {
+      doc.addImage(img, 'JPEG', 20, y + splitIntention.length*7 + 5, 170, 100);
       doc.save("Reçu_Demande_Messe.pdf");
-    });
-  </script>
+    }
+  } else {
+    doc.save("Reçu_Demande_Messe.pdf");
+  }
+});
+</script>
+
 </body>
 </html>
