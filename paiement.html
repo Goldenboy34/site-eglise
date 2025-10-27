@@ -1,54 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Confirmation Paiement</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
-      margin: 0; padding: 20px;
-      color: #0d47a1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    main {
-      background: white;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
-      text-align: center;
-    }
-    h2 {
-      font-weight: 900;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      user-select: none;
-    }
-    button {
-      background-color: #1565c0;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 15px 25px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin: 10px;
-      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0d47a1;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirmation Paiement</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
+    margin: 0;
+    padding: 20px;
+    color: #0d47a1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  main {
+    background: white;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+    text-align: center;
+  }
+  h2 {
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    user-select: none;
+  }
+  button {
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 25px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0d47a1;
+  }
+</style>
 </head>
 <body>
 
@@ -61,12 +62,22 @@
 
 <script>
   document.getElementById('btn-yes').addEventListener('click', () => {
+    // Récupère les données du formulaire
+    const dataStr = sessionStorage.getItem('intentionMesseData');
+    if (dataStr) {
+      const data = JSON.parse(dataStr);
+      data.paye = true;  // <-- Marque le paiement comme effectué
+      sessionStorage.setItem('intentionMesseData', JSON.stringify(data));
+    }
     // Redirection vers le reçu
     window.location.href = 'recu.html';
   });
 
   document.getElementById('btn-no').addEventListener('click', () => {
-    alert("Merci de bien vouloir effectuer le paiement via Tmoney ou Flooz au +228 90 00 00 00.\n\nAprès paiement, revenez ici et cliquez sur 'Oui'.");
+    alert(
+      "Merci de bien vouloir effectuer le paiement via Tmoney ou Flooz au +228 90 00 00 00.\n\n" +
+      "Après paiement, revenez ici et cliquez sur 'Oui'."
+    );
   });
 </script>
 

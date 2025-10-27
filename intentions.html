@@ -1,235 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Demande de Messe</title>
-  <style>
-    /* Reset minimal */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-      margin: 0;
-      padding: 20px;
-      color: #0d47a1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header {
-      background-color: #1565c0;
-      width: 100%;
-      max-width: 700px;
-      padding: 30px 20px;
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 6px 15px rgba(21, 101, 192, 0.6);
-      text-align: center;
-      color: white;
-      font-weight: 900;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      user-select: none;
-      margin-bottom: 25px;
-    }
-    section {
-      background: white;
-      max-width: 700px;
-      width: 100%;
-      border-radius: 12px;
-      padding: 35px 40px 40px;
-      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
-    }
-    h2 {
-      text-align: center;
-      font-weight: 900;
-      color: #0d47a1;
-      margin-bottom: 35px;
-      font-size: 2rem;
-      letter-spacing: 1.2px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-    label {
-      font-weight: 700;
-      color: #0d47a1;
-      margin-bottom: 6px;
-      user-select: none;
-      font-size: 1.1rem;
-    }
-    input[type="text"],
-    input[type="date"],
-    input[type="time"],
-    textarea {
-      padding: 14px 18px;
-      font-size: 1.1rem;
-      border: 2px solid #1976d2;
-      border-radius: 10px;
-      transition: border-color 0.3s, box-shadow 0.3s;
-      font-family: inherit;
-      resize: vertical;
-      color: #0d47a1;
-    }
-    input[type="text"]:focus,
-    input[type="date"]:focus,
-    input[type="time"]:focus,
-    textarea:focus {
-      border-color: #0d47a1;
-      outline: none;
-      box-shadow: 0 0 10px #0d47a1aa;
-    }
-    textarea {
-      min-height: 120px;
-    }
-    /* Radio group */
-    .radio-group {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .radio-group input[type="radio"] {
-      accent-color: #1565c0;
-      cursor: pointer;
-      width: 18px;
-      height: 18px;
-    }
-    .radio-group label {
-      font-weight: 600;
-      cursor: pointer;
-      color: #0d47a1;
-      user-select: none;
-      font-size: 1.05rem;
-    }
-    button[type="submit"] {
-      background-color: #1565c0;
-      color: white;
-      font-weight: 900;
-      font-size: 1.3rem;
-      padding: 16px 0;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      box-shadow: 0 5px 15px rgba(21, 101, 192, 0.7);
-      user-select: none;
-      letter-spacing: 1.2px;
-    }
-    button[type="submit"]:hover,
-    button[type="submit"]:focus {
-      background-color: #0d47a1;
-      box-shadow: 0 8px 25px rgba(13, 71, 161, 0.85);
-      outline: none;
-    }
-    #confirmation-message {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-top: 28px;
-      color: #2e7d32; /* vert foncé */
-      user-select: none;
-    }
-
-    @media (max-width: 480px) {
-      header {
-        font-size: 2rem;
-        padding: 22px 15px;
-      }
-      section {
-        padding: 25px 20px 30px;
-      }
-      .radio-group {
-        gap: 18px;
-      }
-      button[type="submit"] {
-        font-size: 1.1rem;
-        padding: 14px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demande Intention de Messe</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
+    margin: 0;
+    padding: 20px;
+    color: #0d47a1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  main {
+    background: white;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 20px rgba(13,71,161,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #0d47a1;
+    font-weight: 900;
+    margin: 0 0 20px 0;
+  }
+  label {
+    font-weight: 600;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
+  button {
+    background-color: #1565c0;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(21,101,192,0.7);
+    transition: background 0.3s;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #0d47a1;
+  }
+  .footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #555555;
+    text-align: center;
+  }
+</style>
 </head>
 <body>
 
-<header>
-  Demande de Messe
-</header>
+<main>
+  <h1>Demande d'Intention de Messe</h1>
+  <form id="intentionForm" action="https://formspree.io/f/xblkbkew" method="POST">
+    <label for="nom">Nom :</label>
+    <input type="text" name="nom" id="nom" required>
 
-<section>
-  <h2>Soumettez vos intentions de messe</h2>
+    <label for="date">Date de l'intention :</label>
+    <input type="date" name="date" id="date" required>
 
-  <form id="intention-form">
-    <label for="nom">Votre nom</label>
-    <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
+    <label for="type_messe">Type de messe :</label>
+    <select name="type_messe" id="type_messe" required>
+      <option value="Messe de semaine">Messe de semaine</option>
+      <option value="Messe du dimanche">Messe du dimanche</option>
+      <option value="Tridum">Tridum</option>
+      <option value="Neuvaine">Neuvaine</option>
+    </select>
 
-    <label for="date">Date de l’intention</label>
-    <input type="date" id="date" name="date" required />
+    <label for="heure">Heure souhaitée :</label>
+    <input type="time" name="heure" id="heure" required>
 
-    <label>Messe souhaitée</label>
-    <div class="radio-group">
-      <input type="radio" id="messe-semaine" name="type_messe" value="Messe de semaine" required />
-      <label for="messe-semaine">Messe de semaine</label>
+    <label for="intention">Intention :</label>
+    <textarea name="intention" id="intention" rows="3" required></textarea>
 
-      <input type="radio" id="messe-dimanche" name="type_messe" value="Messe du dimanche" required />
-      <label for="messe-dimanche">Messe du dimanche</label>
-
-      <input type="radio" id="Tridum" name="type_messe" value="Tridum" required />
-      <label for="Tridum">Tridum</label>
-
-      <input type="radio" id="Neuvaine" name="type_messe" value="Neuvaine" required />
-      <label for="Neuvaine">Neuvaine</label>
-    </div>
-
-    <label for="heure">Heure souhaitée (ex: 8:30)</label>
-    <input type="time" id="heure" name="heure" required />
-
-    <label for="intention">Votre intention</label>
-    <textarea id="intention" name="intention" placeholder="Écrivez votre demande ici" required></textarea>
-
-    <label for="contact">Votre contact (e-mail/WhatsApp)</label>
-    <input type="text" id="contact" name="contact" placeholder="ex: email@example.com ou +228 90 00 00 00" required />
+    <label for="contact">Contact :</label>
+    <input type="text" name="contact" id="contact" required>
 
     <button type="submit">Envoyer</button>
   </form>
+</main>
 
-  <div id="confirmation-message" style="display:none;">
-    Merci, votre formulaire est bien envoyé ! Vous allez être redirigé…
-  </div>
-</section>
+<div class="footer">
+  Merci de votre contribution. Que Dieu vous bénisse.
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-  const form = document.getElementById('intention-form');
-  const confirmation = document.getElementById('confirmation-message');
+document.getElementById('intentionForm').addEventListener('submit', function(e){
+  e.preventDefault(); // On empêche l'envoi immédiat
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  // Esthétique popup simple
+  const dialog = document.createElement('div');
+  dialog.style.position = 'fixed';
+  dialog.style.top = '0';
+  dialog.style.left = '0';
+  dialog.style.width = '100%';
+  dialog.style.height = '100%';
+  dialog.style.background = 'rgba(0,0,0,0.5)';
+  dialog.style.display = 'flex';
+  dialog.style.alignItems = 'center';
+  dialog.style.justifyContent = 'center';
+  dialog.style.zIndex = '9999';
 
-    // Collecte des données
-    const data = {
-      nom: form.nom.value.trim(),
-      date: form.date.value,
-      type_messe: form.type_messe.value,
-      heure: form.heure.value,
-      intention: form.intention.value.trim(),
-      contact: form.contact.value.trim()
+  const box = document.createElement('div');
+  box.style.background = 'white';
+  box.style.padding = '30px';
+  box.style.borderRadius = '12px';
+  box.style.textAlign = 'center';
+  box.style.maxWidth = '400px';
+  box.innerHTML = `
+    <h2 style="color:#0d47a1;">Avez-vous déjà effectué le paiement ?</h2>
+    <button id="payYes" style="margin:10px;">Oui, j'ai payé</button>
+    <button id="payNo" style="margin:10px;">Non, pas encore</button>
+  `;
+  dialog.appendChild(box);
+  document.body.appendChild(dialog);
+
+  document.getElementById('payYes').addEventListener('click', function(){
+    // Marquer comme payé
+    const formData = {
+      nom: document.getElementById('nom').value,
+      date: document.getElementById('date').value,
+      type_messe: document.getElementById('type_messe').value,
+      heure: document.getElementById('heure').value,
+      intention: document.getElementById('intention').value,
+      contact: document.getElementById('contact').value,
+      paye: true
     };
+    sessionStorage.setItem('intentionMesseData', JSON.stringify(formData));
 
-    // Stockage dans sessionStorage
-    sessionStorage.setItem('intentionMesseData', JSON.stringify(data));
+    // Envoyer Formspree en background
+    fetch("https://formspree.io/f/xblkbkew", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    }).then(() => {
+      window.location.href = "recu.html"; // redirige vers la page du reçu
+    });
 
-    confirmation.style.display = 'block';
-
-    // Redirection après 2.5 secondes vers page paiement
-    setTimeout(() => {
-      window.location.href = 'paiement.html';
-    }, 2500);
+    document.body.removeChild(dialog);
   });
+
+  document.getElementById('payNo').addEventListener('click', function(){
+    alert("Impossible d'envoyer la demande : veuillez effectuer le paiement d'abord !");
+    document.body.removeChild(dialog);
+  });
+});
 </script>
 
 </body>
