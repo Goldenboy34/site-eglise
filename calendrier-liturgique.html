@@ -3,82 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Horaire & Évangile</title>
+<title>Calendrier Liturgique</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-body{font-family:'Poppins',sans-serif;margin:0;padding:0;background:#f4f7fb;color:#0d47a1;}
-header{background:#1976d2;color:white;text-align:center;padding:25px;font-size:2em;font-weight:800;border-radius:0 0 15px 15px;}
-.tabs{display:flex;flex-wrap:wrap;background:#1976d2;}
-.tab-button{flex:1;padding:14px;color:white;text-align:center;cursor:pointer;background:#1976d2;border:none;font-weight:600;transition:0.3s;}
-.tab-button:hover{background:#1565c0;}
-.tab-button.active{background:#0d47a1;}
-.tab-content{display:none;padding:20px;border-top:1px solid #ddd;}
-.tab-content.active{display:block;}
-.tab-content h2{background:#0d47a1;color:white;padding:15px;border-radius:10px;text-align:center;font-size:1.8em;margin-bottom:20px;}
-.tab-content h3{background:#42a5f5;color:#0d47a1;padding:10px;border-radius:8px;margin-bottom:12px;}
-.tab-content ul{padding-left:20px;font-size:1.1em;margin-bottom:25px;}
-.evangile-text{background:#e3f2fd;border-left:5px solid #1976d2;padding:20px;border-radius:10px;line-height:1.5;}
-@media(max-width:600px){.tab-button{flex:1 1 100%;}}
+body{font-family:'Poppins',sans-serif;background:#f4f7fb;margin:0;}
+header{background:#0d47a1;color:white;padding:20px;text-align:center;}
+nav{display:flex;justify-content:center;flex-wrap:wrap;background:#1565c0;}
+nav a{color:white;padding:15px 20px;text-decoration:none;font-weight:600;}
+nav a:hover{background:#0d47a1;}
+.container{max-width:900px;margin:20px auto;padding:20px;}
+h2{color:#0d47a1;margin-bottom:15px;}
+.calendar-card{background:white;padding:20px;margin-bottom:15px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 </style>
 </head>
 <body>
-<header>Horaire & Évangile</header>
-
-<div class="tabs">
-  <button class="tab-button active" data-tab="horaire">Horaire</button>
-  <button class="tab-button" data-tab="references">Références bibliques</button>
-  <button class="tab-button" data-tab="evangile">Évangile du jour</button>
+<header>
+<h1>Calendrier Liturgique</h1>
+</header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="activites.html">Activités</a>
+<a href="annonces.html">Annonces</a>
+<a href="demande.html">Demande de Messe</a>
+<a href="paiement.html">Paiement</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="container">
+<h2>Événements Liturgiques</h2>
+<div class="calendar-card">
+<p>1er Janvier : Messe du Nouvel An à 6h et 8h30.</p>
 </div>
-
-<div id="horaire" class="tab-content active">
-  <h2>Horaires des messes</h2>
-  <h3>Messes de semaine</h3>
-  <ul>
-    <li>Lundi au Vendredi : 5h45</li>
-    <li>Samedi : 6h30</li>
-    <li>Jeudi soir : Adoration 18h30</li>
-    <li>Premier vendredi : Adoration nocturne 22h</li>
-  </ul>
-  <h3>Messes du dimanche</h3>
-  <ul>
-    <li>Samedi anticipée : 18h</li>
-    <li>Dimanche : 6h, 8h30, 11h, 18h</li>
-  </ul>
+<div class="calendar-card">
+<p>6 Janvier : Épiphanie, messe à 18h.</p>
 </div>
-
-<div id="references" class="tab-content">
-  <h2>Références bibliques quotidiennes</h2>
-  <h3>Première lecture</h3>
-  <p>Dt 4, 32-40</p>
-  <h3>Psaume</h3>
-  <p>Ps 76 (77), 12-16</p>
-  <h3>Évangile</h3>
-  <p>Mt 16, 24-28</p>
+<div class="calendar-card">
+<p>15 Février : Mercredi des Cendres, début du Carême.</p>
 </div>
-
-<div id="evangile" class="tab-content">
-  <h2>Évangile du jour</h2>
-  <div class="evangile-text">
-    <p><em>« Que pourra donner l’homme en échange de sa vie ? »</em><br>
-    <strong>Alléluia. Alléluia.</strong></p>
-    <blockquote>
-      « Si quelqu’un veut marcher à ma suite, qu’il renonce à lui-même, qu’il prenne sa croix et qu’il me suive… »
-    </blockquote>
-    <p><em>– Acclamons la Parole de Dieu.</em></p>
-  </div>
 </div>
-
-<script>
-const tabs = document.querySelectorAll('.tab-button');
-const contents = document.querySelectorAll('.tab-content');
-tabs.forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    tabs.forEach(t=>t.classList.remove('active'));
-    contents.forEach(c=>c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
-  });
-});
-</script>
 </body>
 </html>

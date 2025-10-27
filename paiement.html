@@ -3,135 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demande d'Intention de Messe</title>
+<title>Paiement</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f3f6fb, #d9e8fc);
-  margin:0; padding:0; display:flex; justify-content:center; align-items:center; min-height:100vh;
-}
-main {
-  background:white; border-radius:12px; padding:30px 40px; max-width:500px; width:100%;
-  box-shadow:0 8px 20px rgba(13,71,161,0.15);
-}
-h1 {text-align:center; color:#0d47a1; font-weight:900; margin-bottom:25px;}
-label {font-weight:600;}
-input, select, textarea {
-  width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-top:5px; margin-bottom:15px; font-size:1rem;
-}
-button {
-  width:100%; padding:12px; border:none; border-radius:12px;
-  background:#1565c0; color:white; font-weight:700; font-size:1.1rem; cursor:pointer; transition:0.3s;
-}
-button:hover {background:#0d47a1;}
-.upload-section {display:none; margin-bottom:15px;}
+body{font-family:'Poppins',sans-serif;background:#f4f7fb;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;}
+main{background:white;padding:30px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);max-width:500px;width:100%;text-align:center;}
+h1{color:#0d47a1;margin-bottom:20px;}
+input{margin-top:10px;}
+button{margin-top:15px;background:#0d47a1;color:white;padding:12px;border:none;border-radius:12px;cursor:pointer;width:100%;}
+button:hover{background:#1565c0;}
 </style>
 </head>
 <body>
-
 <main>
-  <h1>Demande d'Intention de Messe</h1>
-  <form id="intentionForm">
-    <label for="date">Date de l'intention :</label>
-    <input type="date" id="date" required>
-
-    <label for="type_messe">Type de messe :</label>
-    <select id="type_messe" required>
-      <option value="Messe de semaine">Messe de semaine</option>
-      <option value="Messe du dimanche">Messe du dimanche</option>
-      <option value="Tridum">Tridum</option>
-      <option value="Neuvaine">Neuvaine</option>
-    </select>
-
-    <label for="heure">Heure souhaitée :</label>
-    <input type="time" id="heure" required>
-
-    <label for="intention">Intention :</label>
-    <textarea id="intention" rows="3" required></textarea>
-
-    <label for="montant">Montant du paiement (FCFA) :</label>
-    <input type="number" id="montant" required>
-
-    <label>Avez-vous déjà payé ?</label>
-    <select id="paySelect" required>
-      <option value="">-- Sélectionner --</option>
-      <option value="oui">Oui</option>
-      <option value="non">Non</option>
-    </select>
-
-    <div class="upload-section" id="uploadSection">
-      <label for="paymentFile">Téléverser la preuve de paiement :</label>
-      <input type="file" id="paymentFile" accept="image/*">
-    </div>
-
-    <button type="submit">Envoyer la demande</button>
-  </form>
+<h1>Ajouter votre preuve de paiement</h1>
+<form id="paymentForm">
+<input type="file" id="paymentFile" accept="image/*" required>
+<button type="submit">Valider le paiement</button>
+</form>
 </main>
-
 <script>
-const paySelect = document.getElementById('paySelect');
-const uploadSection = document.getElementById('uploadSection');
-
-paySelect.addEventListener('change', () => {
-  if(paySelect.value === 'oui'){
-    uploadSection.style.display = 'block';
-  } else {
-    uploadSection.style.display = 'none';
-  }
-});
-
-document.getElementById('intentionForm').addEventListener('submit', function(e){
-  e.preventDefault();
-
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  if(!currentUser){
-    alert("Vous devez être connecté pour envoyer une demande !");
-    window.location.href = "login.html";
-    return;
-  }
-
-  const formData = {
-    user: currentUser.email,
-    date: document.getElementById('date').value,
-    type_messe: document.getElementById('type_messe').value,
-    heure: document.getElementById('heure').value,
-    intention: document.getElementById('intention').value,
-    montant: document.getElementById('montant').value,
-    paye: paySelect.value === 'oui',
-    paymentFile: ""
-  };
-
-  if(formData.paye){
-    const fileInput = document.getElementById('paymentFile');
-    if(fileInput.files.length === 0){
-      alert("Veuillez téléverser la preuve de paiement !");
-      return;
-    }
+document.getElementById('paymentForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const file = document.getElementById('paymentFile').files[0];
+    if(!file){ alert("Veuillez choisir une image."); return; }
     const reader = new FileReader();
-    reader.onload = function() {
-      formData.paymentFile = reader.result;
-      saveAndRedirect(formData);
-    }
-    reader.readAsDataURL(fileInput.files[0]);
-  } else {
-    alert("Vous devez effectuer le paiement pour envoyer la demande.");
-  }
+    reader.onload = function(){
+        const data = JSON.parse(localStorage.getItem("demandeMesse")) || {};
+        data.paymentImage = reader.result;
+        localStorage.setItem("demandeMesse", JSON.stringify(data));
+        alert("Paiement ajouté avec succès !");
+        window.location.href="recu.html";
+    };
+    reader.readAsDataURL(file);
 });
-
-function saveAndRedirect(data){
-  // Sauvegarde dans localStorage
-  let demandes = JSON.parse(localStorage.getItem('demandesMesse')) || [];
-  demandes.push(data);
-  localStorage.setItem('demandesMesse', JSON.stringify(demandes));
-
-  // Sauvegarder aussi pour le reçu
-  localStorage.setItem('demandeMesse', JSON.stringify(data));
-
-  alert("Demande envoyée avec succès !");
-  window.location.href = "recu.html";
-}
 </script>
-
 </body>
 </html>

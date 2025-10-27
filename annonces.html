@@ -6,19 +6,39 @@
 <title>Annonces</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-body{font-family:'Poppins',sans-serif;margin:0;padding:0;background:#f5f7fa;color:#0d47a1;}
-header{background:#1976d2;color:white;text-align:center;padding:25px;font-size:2em;font-weight:800;border-radius:0 0 15px 15px;}
-section{max-width:720px;margin:30px auto;padding:25px 30px;background:white;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.1);}
-h2{font-size:1.6em;margin-bottom:15px;}
-p{font-size:1.1em;line-height:1.5;}
-@media(max-width:600px){section{padding:15px 20px;}h2{font-size:1.3em;}p{font-size:1em;}}
+body{font-family:'Poppins',sans-serif;background:#f4f7fb;margin:0;}
+header{background:#0d47a1;color:white;padding:20px;text-align:center;}
+nav{display:flex;justify-content:center;flex-wrap:wrap;background:#1565c0;}
+nav a{color:white;padding:15px 20px;text-decoration:none;font-weight:600;}
+nav a:hover{background:#0d47a1;}
+.container{max-width:900px;margin:20px auto;padding:20px;}
+h2{color:#0d47a1;margin-bottom:15px;}
+.announcement-card{background:white;padding:20px;margin-bottom:15px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
 </style>
 </head>
 <body>
-<header>Les Annonces</header>
-<section>
+<header>
+<h1>Les Annonces</h1>
+</header>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="activites.html">Activités</a>
+<a href="calendrier-liturgique.html">Calendrier Liturgique</a>
+<a href="demande.html">Demande de Messe</a>
+<a href="paiement.html">Paiement</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="container">
 <h2>Nos Annonces</h2>
-<p>Les dernières annonces et informations de la paroisse seront affichées ici.</p>
-</section>
+<div class="announcement-card">
+<p>La messe des malades aura lieu le dernier dimanche du mois à 15h.</p>
+</div>
+<div class="announcement-card">
+<p>Répétition de la chorale chaque mercredi à 17h30.</p>
+</div>
+<div class="announcement-card">
+<p>Campagne de carême : collecte de vivres pour les familles dans le besoin.</p>
+</div>
+</div>
 </body>
 </html>

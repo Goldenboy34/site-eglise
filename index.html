@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paroisse Notre Dame de l’Assomption - Accueil</title>
-    <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de bord</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    min-height: 100vh;
+}
+header {
+    background: #0d47a1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #1565c0;
+}
+nav a {
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+nav a:hover { background: #0d47a1; }
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+</style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <img src="images/logo.jpg" alt="Logo paroisse" class="logo-paroisse-nav" />
-            Paroisse NDA de Demakpoè 
-        </a>
-        <div class="menu-icon" id="menu-icon">&#9776;</div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="calendrier-liturgique.html">Calendrier</a></li>
-            
-            <li><a href="activites.html">Activités</a></li>
-            <li><a href="intentions.html">Demande de Messe</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
+<header>
+    <h1>Bienvenue, <span id="userName"></span></h1>
+</header>
+<nav>
+    <a href="activites.html">Activités</a>
+    <a href="annonces.html">Annonces</a>
+    <a href="calendrier-liturgique.html">Calendrier Liturgique</a>
+    <a href="demande.html">Demande de Messe</a>
+    <a href="paiement.html">Paiement</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" id="logout">Déconnexion</a>
 </nav>
-
-<section class="accueil-info">
-  <h2>Bienvenue à la Paroisse Notre Dame de l’Assomption de Demakpoè</h2>
-
-  <div class="equipe-pastorale">
-    <h3>Équipe pastorale</h3>
-    <ul>
-      <li><strong>Curé actuel :</strong> Père Emmanuel MAWUSSI</li>
-      <li><strong>Vicaire :</strong> Père Marc LOPEZ</li>
-    </ul>
-  </div>
-
-  <div class="message-bienvenue">
-    <p>Nous vous souhaitons la bienvenue sur notre site. Que la paix et la joie du Seigneur accompagnent chacun de vos pas.</p>
-  </div>
-
-  <blockquote class="citation-spirituelle">
-    <p>"La foi est la lumière qui éclaire le chemin dans les moments d'obscurité."</p>
-    <footer>— Saint Augustin</footer>
-  </blockquote>
-</section>
-
-<!-- Script pour menu responsive -->
+<div class="container">
+    <h2>Tableau de bord</h2>
+    <p>Accédez aux différentes fonctionnalités via le menu ci-dessus.</p>
+</div>
 <script>
-    document.getElementById('menu-icon').addEventListener('click', function() {
-        document.getElementById('nav-links').classList.toggle('active');
-    });
+const user = JSON.parse(sessionStorage.getItem("currentUser"));
+if(!user){ window.location.href="login.html"; }
+document.getElementById("userName").textContent = user.username;
+document.getElementById("logout").addEventListener("click", ()=>{
+    sessionStorage.removeItem("currentUser");
+});
 </script>
-
 </body>
 </html>

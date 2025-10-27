@@ -2,171 +2,59 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demande Intention de Messe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demande de Messe</title>
+<link rel="stylesheet" href="css/style.css">
 <style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f3f6fb 0%, #d9e8fc 100%);
-    margin: 0;
-    padding: 20px;
-    color: #0d47a1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  main {
-    background: white;
-    max-width: 600px;
-    width: 100%;
-    border-radius: 12px;
-    padding: 30px 40px;
-    box-shadow: 0 8px 20px rgba(13,71,161,0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  h1 {
-    text-align: center;
-    color: #0d47a1;
-    font-weight: 900;
-    margin: 0 0 20px 0;
-  }
-  label {
-    font-weight: 600;
-  }
-  input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    font-size: 1rem;
-  }
-  button {
-    background-color: #1565c0;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 5px 15px rgba(21,101,192,0.7);
-    transition: background 0.3s;
-    margin-top: 10px;
-  }
-  button:hover {
-    background-color: #0d47a1;
-  }
-  .footer {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #555555;
-    text-align: center;
-  }
+body { font-family: 'Poppins', sans-serif; background: #f4f7fb; margin:0; padding:0; display:flex; justify-content:center; }
+main { background:white; max-width:600px; width:100%; border-radius:15px; padding:30px; margin:30px; box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+h1 { text-align:center; color:#0d47a1; margin-bottom:20px;}
+label { font-weight:600; margin-top:10px; display:block;}
+input, textarea, select { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-top:5px;}
+textarea { resize: vertical; min-height:100px;}
+button { background:#0d47a1; color:white; padding:12px 25px; border:none; border-radius:12px; cursor:pointer; font-weight:700; margin-top:15px; width:100%; }
+button:hover { background:#1565c0; }
 </style>
 </head>
 <body>
-
 <main>
-  <h1>Demande d'Intention de Messe</h1>
-  <form id="intentionForm" action="https://formspree.io/f/xblkbkew" method="POST">
-    <label for="nom">Nom :</label>
-    <input type="text" name="nom" id="nom" required>
-
-    <label for="date">Date de l'intention :</label>
-    <input type="date" name="date" id="date" required>
-
-    <label for="type_messe">Type de messe :</label>
-    <select name="type_messe" id="type_messe" required>
-      <option value="Messe de semaine">Messe de semaine</option>
-      <option value="Messe du dimanche">Messe du dimanche</option>
-      <option value="Tridum">Tridum</option>
-      <option value="Neuvaine">Neuvaine</option>
-    </select>
-
-    <label for="heure">Heure souhaitée :</label>
-    <input type="time" name="heure" id="heure" required>
-
-    <label for="intention">Intention :</label>
-    <textarea name="intention" id="intention" rows="3" required></textarea>
-
-    <label for="contact">Contact :</label>
-    <input type="text" name="contact" id="contact" required>
-
-    <button type="submit">Envoyer</button>
-  </form>
+<h1>Demande d'Intention de Messe</h1>
+<form id="demandeForm">
+<label for="intention">Intention :</label>
+<textarea id="intention" required placeholder="Écrivez votre intention ici..."></textarea>
+<label for="date">Date :</label>
+<input type="date" id="date" required>
+<label for="type">Type de messe :</label>
+<select id="type" required>
+<option>Messe de semaine</option>
+<option>Messe du dimanche</option>
+<option>Tridum</option>
+<option>Neuvaine</option>
+</select>
+<label for="heure">Heure :</label>
+<input type="time" id="heure" required>
+<label for="contact">Contact :</label>
+<input type="text" id="contact" required>
+<button type="submit">Envoyer la demande</button>
+</form>
 </main>
-
-<div class="footer">
-  Merci de votre contribution. Que Dieu vous bénisse.
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-document.getElementById('intentionForm').addEventListener('submit', function(e){
-  e.preventDefault(); // On empêche l'envoi immédiat
-
-  // Esthétique popup simple
-  const dialog = document.createElement('div');
-  dialog.style.position = 'fixed';
-  dialog.style.top = '0';
-  dialog.style.left = '0';
-  dialog.style.width = '100%';
-  dialog.style.height = '100%';
-  dialog.style.background = 'rgba(0,0,0,0.5)';
-  dialog.style.display = 'flex';
-  dialog.style.alignItems = 'center';
-  dialog.style.justifyContent = 'center';
-  dialog.style.zIndex = '9999';
-
-  const box = document.createElement('div');
-  box.style.background = 'white';
-  box.style.padding = '30px';
-  box.style.borderRadius = '12px';
-  box.style.textAlign = 'center';
-  box.style.maxWidth = '400px';
-  box.innerHTML = `
-    <h2 style="color:#0d47a1;">Avez-vous déjà effectué le paiement ?</h2>
-    <button id="payYes" style="margin:10px;">Oui, j'ai payé</button>
-    <button id="payNo" style="margin:10px;">Non, pas encore</button>
-  `;
-  dialog.appendChild(box);
-  document.body.appendChild(dialog);
-
-  document.getElementById('payYes').addEventListener('click', function(){
-    // Marquer comme payé
-    const formData = {
-      nom: document.getElementById('nom').value,
-      date: document.getElementById('date').value,
-      type_messe: document.getElementById('type_messe').value,
-      heure: document.getElementById('heure').value,
-      intention: document.getElementById('intention').value,
-      contact: document.getElementById('contact').value,
-      paye: true
+document.getElementById('demandeForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = {
+        username: JSON.parse(sessionStorage.getItem("currentUser")).username,
+        intention: document.getElementById("intention").value,
+        date: document.getElementById("date").value,
+        type: document.getElementById("type").value,
+        heure: document.getElementById("heure").value,
+        contact: document.getElementById("contact").value
     };
-    sessionStorage.setItem('intentionMesseData', JSON.stringify(formData));
-
-    // Envoyer Formspree en background
-    fetch("https://formspree.io/f/xblkbkew", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    }).then(() => {
-      window.location.href = "recu.html"; // redirige vers la page du reçu
-    });
-
-    document.body.removeChild(dialog);
-  });
-
-  document.getElementById('payNo').addEventListener('click', function(){
-    alert("Impossible d'envoyer la demande : veuillez effectuer le paiement d'abord !");
-    document.body.removeChild(dialog);
-  });
+    localStorage.setItem("demandeMesse", JSON.stringify(data));
+    alert("Demande enregistrée ! Vous pouvez maintenant télécharger votre reçu et envoyer l'email.");
+    window.location.href="recu.html";
 });
 </script>
-
 </body>
 </html>
