@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Inscription</title>
-<style>
-  body {font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; background: #f0f4ff;}
-  main {background:#fff; padding:40px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2); width:100%; max-width:400px;}
-  h1 {text-align:center; color:#0d47a1;}
-  input {width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
-  button {background:#1565c0; color:#fff; padding:12px; border:none; border-radius:12px; cursor:pointer; width:100%; margin-top:10px;}
-  button:hover {background:#0d47a1;}
-  .link {text-align:center; margin-top:15px;}
-  .link a {color:#1565c0; text-decoration:none;}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
-  <h1>Inscription</h1>
-  <form id="registerForm">
-    <input type="text" id="nom" placeholder="Nom complet" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Mot de passe" required>
-    <button type="submit">S'inscrire</button>
-  </form>
-  <div class="link">
-    <a href="login.html">Déjà inscrit ? Connectez-vous</a>
+  <div class="center-screen card">
+    <h2>Créer un compte</h2>
+    <form id="registerForm" class="form">
+      <label>Nom complet</label>
+      <input id="nom" type="text" required placeholder="Ex : Jean Dupont">
+
+      <label>Email</label>
+      <input id="email" type="email" required placeholder="exemple@domaine.com">
+
+      <label>Mot de passe</label>
+      <input id="password" type="password" required placeholder="••••••••">
+
+      <button class="btn" type="submit">S'inscrire</button>
+    </form>
+
+    <p class="muted">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
   </div>
-</main>
 
 <script>
-  const registerForm = document.getElementById('registerForm');
-  registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nom = document.getElementById('nom').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+document.getElementById('registerForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const nom = document.getElementById('nom').value.trim();
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const password = document.getElementById('password').value;
 
-    // On stocke localement les utilisateurs
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-    
-    // Vérifie si l'utilisateur existe déjà
-    if(users.find(u => u.email === email)){
-      alert("Cet email est déjà utilisé !");
-      return;
-    }
+  if(!nom || !email || !password){ alert('Tous les champs sont obligatoires'); return; }
 
-    users.push({nom,email,password});
-    localStorage.setItem('users', JSON.stringify(users));
-    alert("Inscription réussie ! Vous pouvez maintenant vous connecter.");
-    window.location.href = 'login.html';
-  });
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  if(users.some(u => u.email === email)){
+    alert('Cet email est déjà utilisé.');
+    return;
+  }
+
+  const user = { nom, email, password, created: new Date().toISOString() };
+  users.push(user);
+  localStorage.setItem('users', JSON.stringify(users));
+  alert('Inscription réussie — connectez-vous.');
+  window.location.href = 'login.html';
+});
 </script>
 </body>
 </html>

@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interface Paroisse</title>
-<style>
-  body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f7fb;}
-  header {background:#1976d2; color:#fff; padding:20px; text-align:center;}
-  nav a {margin:0 15px; color:#fff; text-decoration:none; font-weight:700;}
-  .welcome {padding:20px; font-size:1.2em;}
-</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Paroisse — Entrée</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<header>
-  <h1>Bienvenue sur l'interface de la paroisse</h1>
-  <nav>
-    <a href="activites.html">Activités</a>
-    <a href="annonces.html">Annonces</a>
-    <a href="calendrier-liturgique.html">Calendrier</a>
-    <a href="contact.html">Contact</a>
-    <a href="paiement.html">Demande de messe</a>
-    <a href="#" id="logout">Déconnexion</a>
-  </nav>
-</header>
-
-<div class="welcome">
-  Bonjour <span id="username"></span> ! Vous êtes connecté.
-</div>
+  <!-- page simple : redirige vers login si pas connecté, sinon vers home -->
+  <div class="center-screen card small">
+    <h1>Paroisse NDA — Portail</h1>
+    <p id="msg">Chargement…</p>
+    <div style="margin-top:18px">
+      <a class="btn" href="login.html">Se connecter / S'inscrire</a>
+    </div>
+  </div>
 
 <script>
-  // Vérifie si un utilisateur est connecté
-  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  if(!currentUser){
-    window.location.href = 'login.html';
+  // Si utilisateur connecté en session -> redirige vers home, sinon vers login
+  const current = sessionStorage.getItem('currentUser');
+  if(current){
+    // déjà connecté -> aller au tableau de bord
+    window.location.href = 'home.html';
   } else {
-    document.getElementById('username').textContent = currentUser.nom;
+    document.getElementById('msg').textContent = "Veuillez vous connecter ou créer un compte.";
+    // stays on login link
   }
-
-  document.getElementById('logout').addEventListener('click', () => {
-    sessionStorage.removeItem('currentUser');
-    window.location.href = 'login.html';
-  });
 </script>
-
 </body>
 </html>

@@ -1,188 +1,186 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demande d'Intention de Messe</title>
-<link rel="stylesheet" href="css/style.css">
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f0f4fd, #d0e1fc);
-    margin: 0;
-    padding: 0;
-    color: #0d47a1;
-  }
-  header {
-    background-color: #1565c0;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-    font-weight: 900;
-  }
-  main {
-    max-width: 600px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-  h2 {
-    text-align: center;
-    color: #0d47a1;
-    margin-bottom: 25px;
-  }
-  label {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-  }
-  input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    font-size: 1rem;
-  }
-  input[type="file"] {
-    padding: 5px;
-  }
-  button {
-    background-color: #1565c0;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-top: 20px;
-    width: 100%;
-    box-shadow: 0 5px 15px rgba(21,101,192,0.5);
-    transition: background 0.3s;
-  }
-  button:hover {
-    background-color: #0d47a1;
-  }
-  .footer {
-    text-align: center;
-    margin: 25px 0;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  @media (max-width: 600px) {
-    main {
-      padding: 20px;
-      margin: 20px 10px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande de Messe</title>
+
+  <!-- Police & style moderne -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a237e, #0d47a1);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-  }
-</style>
+
+    .container {
+      background: #fff;
+      color: #333;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #0d47a1;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #90caf9;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #1565c0;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background: #0d47a1;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #1565c0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .capture-section {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      color: #0d47a1;
+    }
+
+    .capture-section input {
+      background: white;
+    }
+
+    .info {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Demande d’Intention de Messe</h2>
 
-<header>
-  <h1>Demande d'Intention de Messe</h1>
-</header>
+    <form id="formDemandeMesse">
+      <label>Nom complet :</label>
+      <input type="text" name="nom" placeholder="Ex: Kossi Mensah" required>
 
-<main>
-  <h2>Remplissez vos informations</h2>
-  <form id="intentionForm">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" required>
+      <label>Email :</label>
+      <input type="email" name="email" placeholder="Ex: exemple@gmail.com" required>
 
-    <label for="date">Date souhaitée :</label>
-    <input type="date" id="date" name="date" required>
+      <label>Date de la messe :</label>
+      <input type="date" name="date" required>
 
-    <label for="type_messe">Type de messe :</label>
-    <select id="type_messe" name="type_messe" required>
-      <option value="Messe de semaine">Messe de semaine</option>
-      <option value="Messe du dimanche">Messe du dimanche</option>
-      <option value="Tridum">Tridum</option>
-      <option value="Neuvaine">Neuvaine</option>
-    </select>
+      <label>Montant (en FCFA) :</label>
+      <input type="number" name="montant" placeholder="Ex: 2000" required>
 
-    <label for="heure">Heure souhaitée :</label>
-    <input type="time" id="heure" name="heure" required>
+      <label>Intention de Messe :</label>
+      <textarea name="intention" placeholder="Entrez votre intention ici..." required></textarea>
 
-    <label for="intention">Intention (vous pouvez écrire long) :</label>
-    <textarea id="intention" name="intention" rows="5" required></textarea>
+      <label>Avez-vous déjà effectué le paiement ?</label>
+      <select id="paiement" name="paiement" required>
+        <option value="">-- Sélectionnez une option --</option>
+        <option value="oui">Oui</option>
+        <option value="non">Non</option>
+      </select>
 
-    <label for="contact">Contact :</label>
-    <input type="text" id="contact" name="contact" required>
+      <div id="captureSection" class="capture-section hidden">
+        <label>Joindre la capture du paiement :</label>
+        <input type="file" name="capture" accept="image/*">
+        <p class="info">Formats acceptés : JPG, PNG. Taille max : 5MB</p>
+      </div>
 
-    <label for="paiement">Capture du paiement (si déjà payé) :</label>
-    <input type="file" id="paiement" name="paiement" accept="image/*">
+      <button type="submit">Soumettre la demande</button>
+    </form>
+  </div>
 
-    <button type="submit">Envoyer la demande</button>
-  </form>
-</main>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialisation EmailJS
+    (function() {
+      emailjs.init("bKdoUmCQTb20IYffX"); // ta clé publique
+    })();
 
-<div class="footer">
-  Merci de votre contribution. Que Dieu vous bénisse.
-</div>
+    const paiementSelect = document.getElementById("paiement");
+    const captureSection = document.getElementById("captureSection");
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-const form = document.getElementById('intentionForm');
+    paiementSelect.addEventListener("change", () => {
+      captureSection.classList.toggle("hidden", paiementSelect.value !== "oui");
+    });
 
-form.addEventListener('submit', function(e){
-  e.preventDefault();
+    // Envoi du formulaire
+    document.getElementById("formDemandeMesse").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  // Récupération des valeurs
-  const formData = {
-    nom: document.getElementById('nom').value,
-    date: document.getElementById('date').value,
-    type_messe: document.getElementById('type_messe').value,
-    heure: document.getElementById('heure').value,
-    intention: document.getElementById('intention').value,
-    contact: document.getElementById('contact').value,
-    paiementFile: document.getElementById('paiement').files[0] ? document.getElementById('paiement').files[0].name : "Pas de fichier"
-  };
+      const form = this;
+      const paiement = paiementSelect.value;
 
-  // Stockage local pour génération du reçu
-  localStorage.setItem('demandeMesse', JSON.stringify(formData));
+      if (paiement === "non") {
+        alert("⚠️ Veuillez effectuer le paiement via Tmoney ou Flooz au +228 90 00 00 00 avant de soumettre.");
+        return;
+      }
 
-  // Génération PDF
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(16);
-  doc.setTextColor(13,71,161);
-  doc.text("Reçu de la Demande de Messe", 20, 20);
-  doc.setFontSize(12);
-  doc.setTextColor(0,0,0);
-  let y = 40;
-  doc.text(`Nom : ${formData.nom}`, 20, y); y+=10;
-  doc.text(`Contact : ${formData.contact}`, 20, y); y+=10;
-  doc.text(`Date : ${formData.date}`, 20, y); y+=10;
-  doc.text(`Heure : ${formData.heure}`, 20, y); y+=10;
-  doc.text(`Type de messe : ${formData.type_messe}`, 20, y); y+=10;
-  doc.text(`Fichier de paiement : ${formData.paiementFile}`, 20, y); y+=10;
-  const splitText = doc.splitTextToSize(`Intention : ${formData.intention}`, 170);
-  doc.text(splitText, 20, y + 10);
+      alert("⏳ Envoi en cours...");
 
-  doc.save("Reçu_Demande_Messe.pdf");
-
-  // Envoi email via Formspree (à remplacer par votre formulaire réel)
-  fetch("https://formspree.io/f/xblkbkew", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  }).then(() => {
-    alert("Demande envoyée avec succès !");
-    form.reset();
-  }).catch(() => {
-    alert("Erreur lors de l'envoi, réessayez.");
-  });
-});
-</script>
-
+      emailjs.sendForm("service_m0dgi5q", "template_blgawzq", form)
+        .then(function() {
+          alert("✅ Votre demande a été envoyée avec succès !");
+          form.reset();
+          window.location.href = "recu.html";
+        }, function(error) {
+          console.error(error);
+          alert("❌ Une erreur est survenue : " + JSON.stringify(error));
+        });
+    });
+  </script>
 </body>
 </html>

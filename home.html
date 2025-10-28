@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tableau de bord — Paroisse</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar-inner">
+    <h1 class="brand">Paroisse NDA</h1>
+    <div>
+      <span id="welcome" class="muted"></span>
+      <button id="logoutBtn" class="btn btn-sm">Déconnexion</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="grid-tiles">
+    <a class="tile" href="activites.html"><strong>Activités</strong><p>Voir les événements</p></a>
+    <a class="tile" href="annonces.html"><strong>Annonces</strong><p>Dernières informations</p></a>
+    <a class="tile" href="calendrier-liturgique.html"><strong>Calendrier</strong><p>Horaires & évangile</p></a>
+    <a class="tile" href="intentions.html"><strong>Intention de messe</strong><p>Demander une messe</p></a>
+    <a class="tile" href="paiement.html"><strong>Paiement</strong><p>Ajouter capture</p></a>
+    <a class="tile" href="recu.html"><strong>Reçu</strong><p>Télécharger vos reçus</p></a>
+  </section>
+</main>
+
+<script>
+const user = JSON.parse(sessionStorage.getItem('currentUser'));
+if(!user){ window.location.href = 'login.html'; }
+document.getElementById('welcome').textContent = `Bienvenue, ${user.nom}`;
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  sessionStorage.removeItem('currentUser');
+  window.location.href = 'login.html';
+});
+</script>
+</body>
+</html>
