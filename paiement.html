@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paiement</title>
-<link rel="stylesheet" href="css/style.css">
-<style>
-body{font-family:'Poppins',sans-serif;background:#f4f7fb;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;}
-main{background:white;padding:30px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.15);max-width:500px;width:100%;text-align:center;}
-h1{color:#0d47a1;margin-bottom:20px;}
-input{margin-top:10px;}
-button{margin-top:15px;background:#0d47a1;color:white;padding:12px;border:none;border-radius:12px;cursor:pointer;width:100%;}
-button:hover{background:#1565c0;}
-</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paiement</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
-<h1>Ajouter votre preuve de paiement</h1>
-<form id="paymentForm">
-<input type="file" id="paymentFile" accept="image/*" required>
-<button type="submit">Valider le paiement</button>
-</form>
-</main>
-<script>
-document.getElementById('paymentForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const file = document.getElementById('paymentFile').files[0];
-    if(!file){ alert("Veuillez choisir une image."); return; }
-    const reader = new FileReader();
-    reader.onload = function(){
-        const data = JSON.parse(localStorage.getItem("demandeMesse")) || {};
-        data.paymentImage = reader.result;
-        localStorage.setItem("demandeMesse", JSON.stringify(data));
-        alert("Paiement ajouté avec succès !");
-        window.location.href="recu.html";
-    };
-    reader.readAsDataURL(file);
-});
-</script>
+    <div class="center-screen card">
+        <h2>Confirmation de Paiement</h2>
+        <form id="paymentForm">
+            <label>Numéro de transaction :</label>
+            <input type="text" id="transactionNumber" placeholder="Entrez le numéro de transaction" required>
+
+            <label>Nom de la boutique :</label>
+            <input type="text" id="storeName" placeholder="Entrez le nom de la boutique" required>
+
+            <button type="submit" class="btn">Soumettre</button>
+        </form>
+        <p id="responseMessage" class="muted"></p>
+        <a href="home.html" class="btn">Retour à l'accueil</a>
+    </div>
+
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const transactionNumber = document.getElementById('transactionNumber').value.trim();
+            const storeName = document.getElementById('storeName').value.trim();
+
+            // Ici, tu peux ajouter la logique pour traiter les informations de paiement
+            // Par exemple, envoyer les données à un serveur ou les stocker localement
+
+            document.getElementById('responseMessage').textContent = `Merci ! Votre paiement pour ${storeName} avec le numéro de transaction ${transactionNumber} a été enregistré.`;
+        });
+    </script>
 </body>
 </html>
