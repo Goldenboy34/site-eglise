@@ -1,76 +1,51 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #f4f7fb;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.topbar {
-    background: #0d47a1;
-    color: #fff;
-    padding: 15px;
-}
-
-.topbar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card {
-    background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2, h1 {
-    margin: 0;
-}
-
-.tile {
-    background: #e3f2fd;
-    border-radius: 10px;
+.center-screen {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    margin: 10px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
     text-align: center;
-    text-decoration: none;
-    color: #0d47a1;
-    transition: background 0.3s;
 }
 
-.tile:hover {
-    background: #bbdefb;
+label {
+    display: block;
+    margin: 10px 0 5px;
 }
 
-.btn {
-    background: #0d47a1;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background: #1565c0;
-}
-
-.input, textarea {
+input[type="text"], input[type="email"], input[type="date"], textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+}
+
+button.btn {
+    background: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button.btn:hover {
+    background: #4cae4c;
 }
 
 .muted {
-    color: #777;
+    color: #888;
+    text-align: center;
 }
