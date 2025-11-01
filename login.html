@@ -1,45 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Connexion</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="center-screen card">
-    <h2>Connexion</h2>
-    <form id="loginForm" class="form">
-      <label>Email</label>
-      <input id="email" type="email" required placeholder="exemple@domaine.com">
+    <div class="center-screen card">
+        <h2>Connexion</h2>
+        <form id="loginForm" class="form">
+            <label>Email</label>
+            <input id="email" type="email" required placeholder="exemple@domaine.com">
+            <label>Mot de passe</label>
+            <input id="password" type="password" required placeholder="••••••">
+            <button class="btn" type="submit">Se connecter</button>
+        </form>
+        <p class="muted">Pas de compte ? <a href="register.html">Créer un compte</a></p>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
 
-      <label>Mot de passe</label>
-      <input id="password" type="password" required placeholder="••••••">
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            if (!user) {
+                alert('Email ou mot de passe incorrect.');
+                return;
+            }
 
-      <button class="btn" type="submit">Se connecter</button>
-    </form>
-
-    <p class="muted">Pas de compte ? <a href="register.html">Créer un compte</a></p>
-  </div>
-
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const email = document.getElementById('email').value.trim().toLowerCase();
-  const password = document.getElementById('password').value;
-
-  const users = JSON.parse(localStorage.getItem('users')) || [];
-  const user = users.find(u => u.email === email && u.password === password);
-  if(!user){
-    alert('Email ou mot de passe incorrect.');
-    return;
-  }
-
-  // Stocke session utilisateur (sera supprimé à la déconnexion)
-  sessionStorage.setItem('currentUser', JSON.stringify(user));
-  // Redirige vers l'interface principale
-  window.location.href = 'home.html';
-});
-</script>
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.href = 'home.html';
+        });
+    </script>
 </body>
 </html>

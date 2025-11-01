@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Inscription</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inscription</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="center-screen card">
-    <h2>Créer un compte</h2>
-    <form id="registerForm" class="form">
-      <label>Nom complet</label>
-      <input id="nom" type="text" required placeholder="Ex : Jean Dupont">
+    <div class="center-screen card">
+        <h2>Créer un compte</h2>
+        <form id="registerForm" class="form">
+            <label>Nom complet</label>
+            <input id="nom" type="text" required placeholder="Ex : Jean Dupont">
+            <label>Email</label>
+            <input id="email" type="email" required placeholder="exemple@domaine.com">
+            <label>Mot de passe</label>
+            <input id="password" type="password" required placeholder="••••••••">
+            <button class="btn" type="submit">S'inscrire</button>
+        </form>
+        <p class="muted">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nom = document.getElementById('nom').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
 
-      <label>Email</label>
-      <input id="email" type="email" required placeholder="exemple@domaine.com">
+            if (!nom || !email || !password) {
+                alert('Tous les champs sont obligatoires');
+                return;
+            }
 
-      <label>Mot de passe</label>
-      <input id="password" type="password" required placeholder="••••••••">
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.some(u => u.email === email)) {
+                alert('Cet email est déjà utilisé.');
+                return;
+            }
 
-      <button class="btn" type="submit">S'inscrire</button>
-    </form>
+            const user = { nom, email, password, created: new Date().toISOString() };
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
 
-    <p class="muted">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
-  </div>
-
-<script>
-document.getElementById('registerForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  const nom = document.getElementById('nom').value.trim();
-  const email = document.getElementById('email').value.trim().toLowerCase();
-  const password = document.getElementById('password').value;
-
-  if(!nom || !email || !password){ alert('Tous les champs sont obligatoires'); return; }
-
-  let users = JSON.parse(localStorage.getItem('users')) || [];
-  if(users.some(u => u.email === email)){
-    alert('Cet email est déjà utilisé.');
-    return;
-  }
-
-  const user = { nom, email, password, created: new Date().toISOString() };
-  users.push(user);
-  localStorage.setItem('users', JSON.stringify(users));
-  alert('Inscription réussie — connectez-vous.');
-  window.location.href = 'login.html';
-});
-</script>
+            // Envoi d'un email (simulation)
+            alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+            window.location.href = 'login.html';
+        });
+    </script>
 </body>
 </html>

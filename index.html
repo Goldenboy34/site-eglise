@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Paroisse — Entrée</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bienvenue à la Paroisse NDA</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- page simple : redirige vers login si pas connecté, sinon vers home -->
-  <div class="center-screen card small">
-    <h1>Paroisse NDA — Portail</h1>
-    <p id="msg">Chargement…</p>
-    <div style="margin-top:18px">
-      <a class="btn" href="login.html">Se connecter / S'inscrire</a>
-    </div>
-  </div>
-
-<script>
-  // Si utilisateur connecté en session -> redirige vers home, sinon vers login
-  const current = sessionStorage.getItem('currentUser');
-  if(current){
-    // déjà connecté -> aller au tableau de bord
-    window.location.href = 'home.html';
-  } else {
-    document.getElementById('msg').textContent = "Veuillez vous connecter ou créer un compte.";
-    // stays on login link
-  }
-</script>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <h1 class="brand">Paroisse NDA</h1>
+            <div>
+                <button onclick="window.location.href='login.html'" class="btn">Se connecter</button>
+                <button onclick="window.location.href='register.html'" class="btn">S'inscrire</button>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <h2>Bienvenue sur le site de la Paroisse NDA</h2>
+        <p>Veuillez vous connecter pour accéder à toutes nos fonctionnalités.</p>
+    </main>
 </body>
 </html>
